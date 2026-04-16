@@ -12,16 +12,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://sleekfitness.us/legal/client-agreement.html</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://sleekfitness.us/legal/personal-trainer-agreement.html</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
 </urlset>
