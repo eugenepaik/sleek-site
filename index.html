@@ -215,7 +215,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
-  .opening-info span {
+  .opening-info .location-link {
     color: var(--gray);
     display: block;
     font-size: 13px;
@@ -223,7 +223,10 @@
     letter-spacing: 0;
     text-transform: none;
     margin-top: 4px;
+    text-decoration: none;
+    transition: color 0.2s;
   }
+  .opening-info .location-link:hover { color: var(--white); }
 
   .social-row {
     display: flex;
@@ -319,7 +322,7 @@
   <div class="bottom-bar">
     <div class="opening-info">
       Coming
-      <span>Koreatown Plaza, Los Angeles</span>
+      <a href="https://maps.google.com/?q=928+S+Western+Ave+STE+333+Los+Angeles+CA" target="_blank" class="location-link">Koreatown Plaza, Los Angeles</a>
     </div>
     <div class="social-row">
       <a href="https://www.instagram.com/sleekfitness_" target="_blank">Instagram</a>
