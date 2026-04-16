@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sleek — Opening Soon | Koreatown, Los Angeles</title>
+<meta name="description" content="A new standard in premium fitness is coming to Koreatown, Los Angeles. Claim your founding member rate — $120/mo for life." />
+<meta property="og:title" content="Sleek — Opening Soon" />
+<meta property="og:description" content="Premium fitness. Top-of-the-line equipment. No compromises. Claim your founding member rate before we open." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sleek — Opening Soon" />
+<meta name="twitter:description" content="Premium fitness coming to Koreatown, LA. Founding members lock in $120/mo for life." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #080808;
+    --white: #f8f8f6;
+    --gray: #888;
+    --light-gray: #222;
+    --accent: #f8f8f6;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+  }
+
+  /* BACKGROUND TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.02) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* LAYOUT */
+  .container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 48px 60px;
+    position: relative;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .location {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* CENTER CONTENT */
+  .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 700px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gray);
+  }
+
+  .headline {
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 200;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .headline em {
+    font-style: italic;
+    font-weight: 200;
+    color: var(--gray);
+  }
+
+  .subline {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 48px;
+  }
+
+  /* FOUNDING MEMBER FORM */
+  .form-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .form-row {
+    display: flex;
+    gap: 0;
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .form-row:focus-within {
+    border-color: rgba(255,255,255,0.5);
+  }
+  .form-row input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 16px 20px;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+  }
+  .form-row input::placeholder {
+    color: #555;
+  }
+  .form-row button {
+    background: var(--white);
+    color: var(--black);
+    border: none;
+    padding: 16px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .form-row button:hover {
+    background: #ddd;
+  }
+
+  .form-note {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #555;
+    font-weight: 300;
+  }
+  .form-note strong {
+    color: var(--gray);
+    font-weight: 400;
+  }
+
+  /* SUCCESS STATE */
+  .success-msg {
+    display: none;
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 300;
+    letter-spacing: 1px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    max-width: 480px;
+  }
+
+  /* BOTTOM BAR */
+  .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .opening-info {
+    font-size: 11px;
+    font-weight: 300;
+    color: #444;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .opening-info span {
+    color: var(--gray);
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 4px;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 24px;
+  }
+  .social-row a {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .social-row a:hover { color: var(--white); }
+
+  /* VERTICAL LINE ACCENT */
+  .v-line {
+    position: fixed;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 180px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.12), transparent);
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .container { padding: 32px 28px; overflow: auto; }
+    html, body { overflow: auto; }
+    .headline { font-size: 48px; letter-spacing: -1px; }
+    .v-line { display: none; }
+    .location { display: none; }
+    .form-row { flex-direction: column; border: none; gap: 8px; }
+    .form-row input {
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 2px;
+      padding: 14px 16px;
+    }
+    .form-row button {
+      border-radius: 2px;
+      padding: 14px;
+      text-align: center;
+    }
+    .social-row { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- TOP -->
+  <div class="top-bar">
+    <div class="logo">Sleek</div>
+    <div class="location">Koreatown &nbsp;·&nbsp; Los Angeles</div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="center">
+    <div class="eyebrow">Opening Soon</div>
+
+    <h1 class="headline">
+      A new standard<br>
+      <em>is coming.</em>
+    </h1>
+
+    <p class="subline">
+      Premium fitness. Top-of-the-line equipment.
+      No compromises. Koreatown's finest gym
+      opens its doors in 2026.
+    </p>
+
+    <div class="form-label">Claim Your Founding Member Rate</div>
+
+    <form class="form-row" id="signupForm" onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="Your name" required id="nameInput" style="border-right: 1px solid rgba(255,255,255,0.08); max-width: 160px;" />
+      <input type="email" placeholder="Email address" required id="emailInput" />
+      <button type="submit">Join the List</button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      You're on the list. &nbsp;We'll be in touch before anyone else.
+    </div>
+
+    <p class="form-note" id="formNote">
+      Founding members special pricing available — please sign up.
+    </p>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom-bar">
+    <div class="opening-info">
+      Coming
+      <span>Koreatown Plaza, Los Angeles</span>
+    </div>
+    <div class="social-row">
+      <a href="https://www.instagram.com/sleekfitness_" target="_blank">Instagram</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="v-line"></div>
+
+<script>
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const name  = document.getElementById('nameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    const btn   = e.target.querySelector('button');
+
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://connect.mailerlite.com/api/subscribers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiOGNmYjYxMmFjODE5ZDBhNTllZDViMTBlMDBlNjNlOTU1ZWI3NTQ5MGZjNTE5OGJlZDIyOTE5M2Q3YTM1NDJiNjI3NTA3MWRiNGZlMzBiOTUiLCJpYXQiOjE3NzYyODU1MjQuMDA5Njk2LCJuYmYiOjE3NzYyODU1MjQuMDA5Njk4LCJleHAiOjQ5MzE5NTkxMjQuMDA1MDc5LCJzdWIiOiIyMjg4MjQ3Iiwic2NvcGVzIjpbXX0.RBo2JzMk7EKRrRyzXHYY3tx0S5_lvC3_ONd7GVwHoCqvuPgmCj9VI50Rwgt1n3zwsaGRFjqhmn1h_hPvvY-lZKXavkDzEcf0wzizkBqzilZtc0XuG4-1xJx-05rTkYXV2MrL4Esk3ZXi2XwR9e4P3j0d5Ypa0ib1XmluVS5SSHmm3BpVg0iFXJGnvjQ44pLpCMDQ4cTuxxUAvJ5xzVWI6ymsSMBg56I2YtigOyPxVm1AZ43HK7385crFu2VnNsKzmlN237RHgOXgsavOlhLID-Q3Lk3sV1mmiFnzdJbpG1zp7ms_BzNCzsQGr5WnIdnrVq333zgCYKdncrzG35yM91eDtCOIt2p3jZQGAq8xxeHJuXJFxKY9GAfmFyWN2aftIK_nl66lxm00TO_bKWqf9R1WGdFc5NqB_LDT0F3j0jgPAsN2apuDrYiEsDk7N0D4L3O66VZsB0vMgmV4Y74VMsgWySDq9mCUyu9fvASUxhiGuPxKjdZJ9XmBKCHBu8w1N2zn1sWlD4mJUprHpnPfw6ko9iLmvBAq0Q1fKJ4RHyuBKcSOqjJW1Ym4gErmCUmHUJ3hoDfFQ2awLdM3Lnzg3qPCEXpsI9uwayNEtGCeN5rI9zr6_gQ6HW-nWWKzyivW-v_lIRulu47Fc7p0KGvpvdODSRiYOG1GYHT5PUZKMfI'
+        },
+        body: JSON.stringify({
+          email: email,
+          fields: { name: name },
+          groups: ['184768385929708973']
+        })
+      });
+
+      if (res.status === 200 || res.status === 201) {
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('formNote').style.display  = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      } else {
+        throw new Error('Unexpected status: ' + res.status);
+      }
+
+    } catch (err) {
+      btn.textContent = 'Join the List';
+      btn.disabled = false;
+      alert('Something went wrong — please try again.');
+    }
+  }
+</script>
+
+</body>
+</html>
