@@ -1,0 +1,5 @@
+# Local Netlify folder
+.netlify
+
+# Local-only font files used to render OG images
+.fonts/
