@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sleek — Recurring Payment Authorization</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    line-height: 1.7;
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 22px; font-weight: 600; text-align: center; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 4px; }
+  .subtitle { text-align: center; font-size: 12px; color: #666; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; line-height: 1.8; }
+  h2 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin: 32px 0 12px; border-bottom: 1px solid #e0e0e0; padding-bottom: 6px; }
+  p, li { font-size: 13px; font-weight: 300; margin-bottom: 10px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  ol { padding-left: 20px; }
+  ol > li { margin-bottom: 8px; }
+  ul { padding-left: 20px; list-style: disc; }
+  .section { margin-bottom: 28px; }
+  .highlight-box {
+    background: #fdf6f6;
+    border: 1px solid #e8c4c4;
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin: 20px 0;
+  }
+  .highlight-box p { font-weight: 400; color: #8b2020; }
+  .warning-box {
+    background: #fff8f0;
+    border: 1px solid #e8d4b8;
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin: 20px 0;
+  }
+  .warning-box p { font-weight: 400; color: #7a5a2e; }
+  .parties { background: #f9f9f9; padding: 20px 24px; border-radius: 4px; margin-bottom: 32px; font-size: 13px; }
+  .parties strong { font-weight: 500; }
+  .initial-line { display: inline-block; width: 60px; border-bottom: 1px solid #333; margin: 0 8px; vertical-align: middle; }
+  .field-line { border-bottom: 1px solid #333; height: 24px; margin-bottom: 6px; }
+  .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 16px; }
+  .field-grid-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 24px; margin-bottom: 16px; }
+  .field-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 16px; }
+  .field-row { margin-bottom: 16px; }
+  .field-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+  .checkbox-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; font-size: 13px; }
+  .checkbox-row label { display: inline-flex; align-items: center; gap: 6px; }
+  .checkbox-box { display: inline-block; width: 14px; height: 14px; border: 1.5px solid #333; vertical-align: middle; }
+  .sig-block { margin-top: 60px; }
+  .sig-party { margin-bottom: 40px; font-size: 13px; }
+  .sig-line { border-bottom: 1px solid #333; margin: 40px 0 6px; }
+  .sig-label { font-size: 11px; color: #666; margin-bottom: 2px; }
+  .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .effective-date { text-align: center; font-size: 13px; color: #666; margin-bottom: 32px; }
+  .bold-caps { font-weight: 600; text-transform: uppercase; }
+  @media print {
+    body { padding: 32px 20px; }
+    .highlight-box { border: 2px solid #8b2020; }
+    .section, .parties, .highlight-box, .warning-box,
+    .field-grid-2, .field-grid-3, .field-grid-4,
+    .checkbox-row, .sig-party, ol, ul, li {
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    h1, h2, .subtitle { break-after: avoid; page-break-after: avoid; }
+    h2 { margin: 18px 0 16px; }
+    .section { margin-bottom: 14px; }
+    .parties { padding: 14px 18px; margin-bottom: 18px; }
+    .highlight-box, .warning-box { padding: 12px 18px; margin: 12px 0 28px; }
+    .field-grid-2, .field-grid-3, .field-grid-4, .field-row { margin-bottom: 18px; }
+    .field-line { height: 28px; margin-bottom: 4px; }
+    ol > li { margin-bottom: 4px; }
+    p, li { margin-bottom: 6px; line-height: 1.45; }
+    .effective-date { margin-bottom: 18px; }
+    .subtitle { margin-bottom: 22px; }
+    .allow-break, .allow-break ol, .allow-break ul, .allow-break li {
+      break-inside: auto !important; page-break-inside: auto !important;
+    }
+    .page-break-before { break-before: page; page-break-before: always; }
+    .sig-block { break-before: page; page-break-before: always; margin-top: 0; }
+    .sig-party { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Sleek</h1>
+<div class="subtitle">
+  Recurring Payment Authorization
+</div>
+<div class="effective-date">Date: ___________________</div>
+
+<div class="parties">
+  <p>This Recurring Payment Authorization ("Authorization") is given by the undersigned cardholder ("Cardholder") to <strong>Sleek Fitness LLC</strong>, located at Koreatown Plaza, 928 S Western Ave, STE 333, Los Angeles, CA 90006 ("Sleek" or "Company"), authorizing Sleek to initiate recurring charges to the payment card identified below in accordance with the terms set forth herein.</p>
+</div>
+
+<div class="highlight-box">
+  <p><strong>PLEASE COMPLETE ALL FIELDS IN INK. THIS FORM AUTHORIZES SLEEK FITNESS LLC TO CHARGE YOUR PAYMENT CARD ON A RECURRING BASIS UNTIL CANCELLED IN WRITING.</strong></p>
+</div>
+
+<!-- 1. CARDHOLDER INFORMATION -->
+<div class="section">
+  <h2>1. Cardholder Information</h2>
+  <div class="field-grid-2">
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Cardholder Full Name (as printed on card)</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Member Name (if different)</div>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field-line"></div>
+    <div class="field-label">Billing Street Address</div>
+  </div>
+  <div class="field-grid-3">
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">City</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">State</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">ZIP Code</div>
+    </div>
+  </div>
+  <div class="field-grid-2">
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Phone Number</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Email Address</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. PAYMENT CARD DETAILS -->
+<div class="section">
+  <h2>2. Payment Card Details</h2>
+  <div class="checkbox-row">
+    <label><span class="checkbox-box"></span> Visa</label>
+    <label><span class="checkbox-box"></span> Mastercard</label>
+    <label><span class="checkbox-box"></span> American Express</label>
+    <label><span class="checkbox-box"></span> Discover</label>
+  </div>
+  <div class="field-row">
+    <div class="field-line"></div>
+    <div class="field-label">Card Number</div>
+  </div>
+  <div class="field-grid-3">
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Expiration Date (MM / YY)</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">CVV / Security Code</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Billing ZIP</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. RECURRING CHARGE TERMS -->
+<div class="section">
+  <h2>3. Recurring Charge Terms</h2>
+  <div class="field-grid-2">
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Membership Plan</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Recurring Amount (USD)</div>
+    </div>
+  </div>
+  <div class="field-grid-3">
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Billing Frequency</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">Billing Day of Month</div>
+    </div>
+    <div>
+      <div class="field-line"></div>
+      <div class="field-label">First Charge Date</div>
+    </div>
+  </div>
+  <p style="margin-top: 8px; font-size: 12px; color: #555;">If the recurring amount changes pursuant to the terms of the Client Membership Agreement (e.g., a published rate increase), the Cardholder will be given thirty (30) days' prior written notice in accordance with that Agreement and may cancel as provided in Section 5 below.</p>
+</div>
+
+<!-- 4. AUTHORIZATION -->
+<div class="section">
+  <h2>4. Authorization</h2>
+  <p>I, the undersigned Cardholder, authorize <strong>Sleek Fitness LLC</strong> and its payment processor, <strong>CardConnect (a Fiserv company)</strong>, to initiate recurring charges to the payment card identified in Section 2 above, in the amount and on the schedule set forth in Section 3, in payment of membership dues, applicable taxes, and any other charges I have agreed to under my Client Membership Agreement with Sleek Fitness LLC.</p>
+  <p>I represent and warrant that:</p>
+  <ol type="a">
+    <li>I am the authorized cardholder of the payment card identified above, or I have the express authority of the cardholder to provide this Authorization;</li>
+    <li>The information I have provided is accurate and complete;</li>
+    <li>I have sufficient funds or available credit to cover each recurring charge as it is presented; and</li>
+    <li>I will promptly notify Sleek Fitness LLC in writing of any change to the payment card information, including expiration, replacement, loss, theft, or closure of the account.</li>
+  </ol>
+  <p>If a recurring charge is declined, returned, or reversed for any reason, I agree that Sleek may (i) retry the charge, (ii) charge a reasonable returned-payment fee as permitted by law, and (iii) suspend or terminate my membership in accordance with the Client Membership Agreement until the balance is brought current.</p>
+</div>
+
+<!-- 5. CANCELLATION -->
+<div class="section">
+  <h2>5. Cancellation of Authorization</h2>
+  <ol type="a">
+    <li><strong>Written Notice.</strong> This Authorization will remain in effect until the Cardholder cancels it in writing. Cancellation must be submitted to Sleek Fitness LLC in writing (by signed letter delivered to the facility address above or by email to the address designated by Sleek for membership matters) and will become effective no later than thirty (30) days after receipt, in accordance with the Client Membership Agreement.</li>
+    <li><strong>Outstanding Balance.</strong> Cancellation of this Authorization does not relieve the Cardholder or the Member of any membership fees, charges, or other amounts owed and accrued through the effective date of cancellation, all of which remain due and payable.</li>
+    <li><strong>Card Replacement / Updater.</strong> If the Cardholder's card is reissued (e.g., new expiration, replacement after loss/theft, or branded reissue), the Cardholder authorizes Sleek and its payment processor to use card-account-updater services provided by the card networks to receive the updated card information so that recurring charges may continue without interruption, unless the Cardholder opts out by notifying Sleek in writing.</li>
+  </ol>
+</div>
+
+<!-- 6. DATA HANDLING & SECURITY -->
+<div class="section page-break-before">
+  <h2>6. Data Handling and Security</h2>
+  <ol type="a">
+    <li><strong>PCI-Compliant Processor.</strong> Card data provided on this form will be entered into Sleek's PCI-compliant payment processor (CardConnect) and stored as a tokenized record by the processor. Sleek does not retain the full card number on its own systems.</li>
+    <li><strong>Form Retention.</strong> The signed paper original of this form will be securely stored in a locked location accessible only to authorized Sleek personnel, retained only for the period required by applicable law and card-network rules, and then securely destroyed (e.g., cross-cut shredding).</li>
+    <li><strong>No Email or Cloud Transmission.</strong> A completed copy of this form containing the full card number will not be transmitted by email, text message, or unencrypted cloud storage.</li>
+  </ol>
+</div>
+
+<!-- 7. ACKNOWLEDGMENT -->
+<div class="section allow-break">
+  <h2>7. Cardholder Acknowledgment</h2>
+
+  <div class="highlight-box">
+    <p><strong>BY SIGNING BELOW, THE CARDHOLDER ACKNOWLEDGES AND AGREES TO THE FOLLOWING:</strong></p>
+  </div>
+
+  <p>Initial each item:</p>
+  <ol type="a">
+    <li><span class="initial-line"></span> I have read this entire Authorization and understand its terms.</li>
+    <li><span class="initial-line"></span> I authorize Sleek Fitness LLC, through its payment processor CardConnect, to charge my card on the recurring schedule set forth above until I cancel this Authorization in writing.</li>
+    <li><span class="initial-line"></span> I am the authorized cardholder of the card listed above, or I have the express authority of the cardholder to provide this Authorization.</li>
+    <li><span class="initial-line"></span> I understand that cancellation of this Authorization does not cancel my membership, and cancellation of my membership requires separate written notice as set forth in the Client Membership Agreement.</li>
+    <li><span class="initial-line"></span> I understand that declined or returned charges may result in retry attempts, returned-payment fees, and/or suspension or termination of my membership.</li>
+    <li><span class="initial-line"></span> I am signing this Authorization freely, voluntarily, and without coercion.</li>
+  </ol>
+</div>
+
+<!-- SIGNATURES -->
+<div class="sig-block">
+  <div class="sig-party">
+    <p><strong>CARDHOLDER</strong></p>
+    <div class="sig-grid">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Cardholder Signature</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Date</div>
+      </div>
+    </div>
+    <div class="sig-grid" style="margin-top: 20px;">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Printed Name</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Relationship to Member (if not self)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sig-party" style="margin-top: 40px;">
+    <p><strong>COMPANY USE ONLY</strong></p>
+    <div class="sig-grid">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Received By (Sleek Staff)</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Date Received</div>
+      </div>
+    </div>
+    <div class="sig-grid" style="margin-top: 20px;">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">CardPointe Customer / Token ID</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Date Form Destroyed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
