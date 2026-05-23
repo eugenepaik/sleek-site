@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sleek — Cleaning in Progress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* =====================================================
+     SLEEK — printable sign (portrait letter, 8.5 x 11)
+     Cleaning notice. Light ink-on-paper variant —
+     same DNA as the weekend-hours sign.
+     ===================================================== */
+
+  @page { size: 8.5in 11in; margin: 0; }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #f4f3ef;
+    --white: #0a0a0a;
+    --gray: #555553;
+    --gray-dim: #6e6e6c;
+    --gray-dimmer: #8a8a87;
+    --hair: rgba(0, 0, 0, 0.18);
+    --hair-strong: rgba(0, 0, 0, 0.32);
+  }
+
+  html, body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .sign {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    background: var(--black);
+    padding: 0.8in 0.85in;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  }
+
+  .sign::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 15% 40%, rgba(0,0,0,0.025) 0%, transparent 60%),
+      radial-gradient(ellipse at 85% 15%, rgba(0,0,0,0.018) 0%, transparent 55%);
+  }
+
+  .sign > * { position: relative; z-index: 1; }
+
+  /* ===== Header strip ===== */
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .logo {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .head-meta {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ===== Body ===== */
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 36px 0 28px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 36px;
+    height: 1px;
+    background: var(--gray);
+  }
+
+  .headline {
+    font-size: 92px;
+    font-weight: 200;
+    letter-spacing: -2.6px;
+    line-height: 0.95;
+    color: var(--white);
+  }
+  .headline em {
+    font-style: italic;
+    font-weight: 200;
+    color: var(--gray);
+  }
+
+  .subline {
+    margin-top: 24px;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.2px;
+    color: var(--gray-dim);
+    line-height: 1.35;
+    max-width: 5.6in;
+  }
+
+  /* ===== Fill-in fields ===== */
+  .fields {
+    margin-top: 56px;
+    border-top: 1px solid var(--hair-strong);
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .field.full { grid-column: 1 / -1; }
+  .field-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .field-line {
+    height: 1.5px;
+    background: var(--hair-strong);
+    width: 100%;
+  }
+
+  /* ===== Footer ===== */
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 22px;
+    border-top: 1px solid var(--hair);
+    margin-top: auto;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-dimmer);
+  }
+  .foot strong {
+    display: block;
+    color: var(--white);
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    text-transform: none;
+    font-size: 13px;
+  }
+  .foot .contact { text-align: right; }
+
+  @media print {
+    body { padding: 0; display: block; }
+    .sign { width: 100%; height: 100%; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="sign">
+
+    <div class="head">
+      <div class="logo">Sleek</div>
+      <div class="head-meta">Koreatown &nbsp;·&nbsp; Los Angeles</div>
+    </div>
+
+    <div class="body">
+      <div class="eyebrow">Service</div>
+      <div class="headline">Cleaning in <em>Progress.</em></div>
+      <div class="subline">Please do not use. We're keeping the space spotless — this area will be back open for you shortly.</div>
+
+      <div class="fields">
+        <div class="field full">
+          <div class="field-label">Area</div>
+          <div class="field-line"></div>
+        </div>
+        <div class="field">
+          <div class="field-label">Started</div>
+          <div class="field-line"></div>
+        </div>
+        <div class="field">
+          <div class="field-label">Back in Service</div>
+          <div class="field-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <div class="effective">
+        Thank you for your patience.
+      </div>
+      <div class="contact">
+        Questions
+        <strong>info@sleekfitness.us</strong>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
