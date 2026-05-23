@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sleek — Day Pass Waiver & Release of Liability</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    line-height: 1.7;
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 22px; font-weight: 600; text-align: center; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 4px; }
+  .subtitle { text-align: center; font-size: 12px; color: #666; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; line-height: 1.8; }
+  h2 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin: 32px 0 12px; border-bottom: 1px solid #e0e0e0; padding-bottom: 6px; }
+  p, li { font-size: 13px; font-weight: 300; margin-bottom: 10px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  ol { padding-left: 20px; }
+  ol > li { margin-bottom: 8px; }
+  ul { padding-left: 20px; list-style: disc; }
+  .section { margin-bottom: 28px; }
+  .highlight-box {
+    background: #fdf6f6;
+    border: 1px solid #e8c4c4;
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin: 20px 0;
+  }
+  .highlight-box p { font-weight: 400; color: #8b2020; }
+  .warning-box {
+    background: #fff8f0;
+    border: 1px solid #e8d4b8;
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin: 20px 0;
+  }
+  .warning-box p { font-weight: 400; color: #7a5a2e; }
+  .parties { background: #f9f9f9; padding: 20px 24px; border-radius: 4px; margin-bottom: 32px; font-size: 13px; }
+  .parties strong { font-weight: 500; }
+  .field-line { border-bottom: 1px solid #333; height: 24px; margin-bottom: 6px; }
+  .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 16px; }
+  .field-row { margin-bottom: 16px; }
+  .field-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+  .sig-block { margin-top: 60px; }
+  .sig-party { margin-bottom: 40px; font-size: 13px; }
+  .sig-line { border-bottom: 1px solid #333; margin: 40px 0 6px; }
+  .sig-label { font-size: 11px; color: #666; margin-bottom: 2px; }
+  .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .effective-date { text-align: center; font-size: 13px; color: #666; margin-bottom: 32px; }
+  .bold-caps { font-weight: 600; text-transform: uppercase; }
+  @media print {
+    @page {
+      size: letter;
+      margin: 0.5in 0.45in 0.85in 0.45in;
+      @bottom-left {
+        content: "Guest Initials  ____________________";
+        font-family: 'Inter', sans-serif;
+        font-size: 9px;
+        color: #666;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding-bottom: 0.25in;
+      }
+      @bottom-right {
+        content: "____________________  Date";
+        font-family: 'Inter', sans-serif;
+        font-size: 9px;
+        color: #666;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding-bottom: 0.25in;
+      }
+    }
+    @page no-footer {
+      size: letter;
+      margin: 0.5in 0.45in 0.5in 0.45in;
+      @bottom-left { content: ""; }
+      @bottom-right { content: ""; }
+    }
+    .no-footer-page { page: no-footer; }
+    body { padding: 0; max-width: none; line-height: 1.5; }
+    .highlight-box { border: 2px solid #8b2020; }
+    .section, .parties, .highlight-box, .warning-box,
+    .field-grid-2, .sig-party, ol, ul, li {
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    h1, h2, .subtitle { break-after: avoid; page-break-after: avoid; }
+    h2 { margin: 18px 0 10px; }
+    .section { margin-bottom: 16px; }
+    .parties { padding: 12px 16px; margin-bottom: 18px; }
+    .highlight-box, .warning-box { padding: 10px 16px; margin: 12px 0; }
+    .field-grid-2, .field-row { margin-bottom: 12px; }
+    .field-line { height: 22px; margin-bottom: 4px; }
+    p, li { margin-bottom: 5px; line-height: 1.45; }
+    ol > li { margin-bottom: 5px; }
+    .subtitle { margin-bottom: 24px; }
+    .effective-date { margin-bottom: 20px; }
+    .sig-block { margin-top: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Sleek</h1>
+<div class="subtitle">
+  Day Pass &mdash; Assumption of Risk,<br>
+  Waiver &amp; Release of Liability
+</div>
+<div class="effective-date">Visit Date: ___________________</div>
+
+<div class="parties">
+  <p>This Day Pass Waiver &amp; Release of Liability ("Waiver") is entered into by and between:</p>
+  <p><strong>"Company"</strong> &mdash; Sleek Fitness LLC, located at Koreatown Plaza, 928 S Western Ave, STE 333, Los Angeles, CA 90006 (including its owners, officers, directors, members, managers, employees, agents, independent contractors, trainers, volunteers, and affiliates, collectively "Released Parties")</p>
+  <p><strong>"Guest"</strong> &mdash; The individual identified and signing below, purchasing a single-day use of the facility</p>
+</div>
+
+<div class="highlight-box">
+  <p><strong>PLEASE READ CAREFULLY. THIS WAIVER INCLUDES A RELEASE OF LIABILITY, ASSUMPTION OF RISK, AND INDEMNIFICATION. BY SIGNING, YOU ARE GIVING UP SUBSTANTIAL LEGAL RIGHTS, INCLUDING THE RIGHT TO SUE FOR NEGLIGENCE.</strong></p>
+</div>
+
+<!-- SECTION 1: DAY PASS TERMS -->
+<div class="section">
+  <h2>1. Day Pass Terms</h2>
+  <ol type="a">
+    <li><strong>Scope.</strong> This Waiver grants the Guest access to the Company's facility for a <strong>single calendar day</strong> only, on the Visit Date above. It does not create or imply a membership, and it does not entitle the Guest to any membership benefit, recurring access, personal training, or rate-locked pricing.</li>
+    <li><strong>Fee.</strong> Day Pass Fee: $__________ (non-refundable and non-transferable). Payment is due upon entry.</li>
+    <li><strong>Hours &amp; Access.</strong> Access is limited to the Company's posted hours of operation on the Visit Date. The Company may modify hours, close for maintenance, holidays, or emergencies, or limit access to certain areas at any time without prior notice or liability.</li>
+    <li><strong>One Visit, One Person.</strong> Each Day Pass admits one (1) person for one (1) visit. The pass may not be shared, resold, or used to admit additional guests.</li>
+  </ol>
+</div>
+
+<!-- SECTION 2: FACILITY RULES -->
+<div class="section">
+  <h2>2. Facility Rules and Conduct</h2>
+  <ol type="a">
+    <li><strong>Rules and Policies.</strong> The Guest agrees to abide by all facility rules, policies, and posted signage. Violation may result in immediate removal from the premises without refund.</li>
+    <li><strong>Prohibited Conduct.</strong> The following is strictly prohibited and may result in immediate removal: harassment, intimidation, or threatening behavior toward members, staff, trainers, or other guests; use of illegal substances; bringing weapons onto the premises; theft, vandalism, or damage to property; unauthorized recording, photography, or filming of others; soliciting or providing unauthorized personal training; use of the facility while under the influence of drugs or alcohol; and any behavior that creates an unsafe environment.</li>
+    <li><strong>Etiquette.</strong> The Guest shall <strong>never</strong> throw, drop, or slam weights, and shall return all weights and equipment to their designated location after use. The Guest shall refrain from excessive grunting, shouting, or other disruptive sounds that may make others uncomfortable, and shall treat all members, staff, and other guests with respect at all times.</li>
+    <li><strong>Personal Property.</strong> The Company is <strong>NOT responsible</strong> for loss, theft, or damage to any personal property brought onto the premises, including vehicles in the parking area, items left in lockers, and personal electronics. Use of any storage or locker facilities is at the Guest's sole risk.</li>
+  </ol>
+</div>
+
+<!-- SECTION 3: ASSUMPTION OF RISK -->
+<div class="section">
+  <h2>3. Assumption of Risk</h2>
+
+  <div class="highlight-box">
+    <p><strong>THE GUEST ACKNOWLEDGES THAT PHYSICAL EXERCISE AND USE OF FITNESS EQUIPMENT INVOLVE INHERENT RISKS OF INJURY, DISABILITY, AND DEATH THAT CANNOT BE ELIMINATED REGARDLESS OF THE CARE TAKEN.</strong></p>
+  </div>
+
+  <ol type="a">
+    <li><strong>Voluntary Participation.</strong> Participation in fitness activities, exercise, and use of equipment at the Company's facility is entirely voluntary.</li>
+    <li><strong>Known Risks.</strong> Inherent risks include, without limitation: muscle strains, sprains, tears, and pulls; broken bones, fractures, and joint injuries; heart attack, stroke, and cardiovascular events; paralysis, spinal cord injury, and traumatic brain injury; dehydration and heat exhaustion; aggravation of pre-existing conditions; injuries from equipment malfunction, misuse, or failure; injuries from slips, trips, and falls; injuries caused by the actions or inactions of other members, guests, staff, or trainers; exposure to communicable diseases, bacteria, viruses, and infections; and serious bodily injury or death.</li>
+    <li><strong>Full Assumption.</strong> <span class="bold-caps">The Guest knowingly, voluntarily, and expressly assumes ALL risks of injury, illness, disability, or death arising from or related to the Guest's use of the Company's facilities, equipment, services, and premises, whether or not caused by the negligence of the Released Parties.</span></li>
+    <li><strong>Medical Fitness.</strong> The Guest represents that the Guest is physically fit and has no medical condition that would prevent safe participation in physical exercise, or has consulted a physician and been cleared to participate. The Guest will immediately stop and notify staff if the Guest experiences any pain, discomfort, dizziness, nausea, or other symptoms. The Company and its staff are not medical professionals and provide no medical advice, diagnosis, or treatment.</li>
+  </ol>
+</div>
+
+<!-- SECTION 4: WAIVER AND RELEASE -->
+<div class="section">
+  <h2>4. Waiver and Release of Liability</h2>
+
+  <div class="highlight-box">
+    <p><strong>BY SIGNING, THE GUEST WAIVES AND RELEASES ALL CLAIMS AGAINST THE RELEASED PARTIES, INCLUDING CLAIMS FOR NEGLIGENCE.</strong></p>
+  </div>
+
+  <ol type="a">
+    <li><strong>Release of Claims.</strong> <span class="bold-caps">To the fullest extent permitted by law, the Guest hereby releases, waives, discharges, and covenants not to sue</span> the Released Parties from any and all liability, claims, demands, causes of action, damages, losses, and expenses (including attorneys' fees) of any kind, whether known or unknown, arising out of or in any way connected with: the Guest's use of or presence at the Company's facility, equipment, programs, or services; any injury, illness, disability, death, or property damage sustained by the Guest while on the premises or participating in any Company-related activity; the negligence, acts, or omissions of the Released Parties; the condition of the premises, equipment, or facilities; and any interactions with other members, guests, staff, trainers, or third parties on the premises.</li>
+    <li><strong>Scope.</strong> This release applies to claims arising from negligence (active or passive), equipment defects or failure, premises defects or hazards, inadequate supervision or instruction, actions of other members or third parties, and any other cause whatsoever, except for claims arising from the Released Parties' gross negligence or willful misconduct.</li>
+    <li><strong>California Civil Code Section 1542 Waiver.</strong> The Guest expressly waives Section 1542 of the California Civil Code, which provides:
+      <div class="warning-box">
+        <p><em>"A general release does not extend to claims that the creditor or releasing party does not know or suspect to exist in his or her favor at the time of executing the release and that, if known by him or her, would have materially affected his or her settlement with the debtor or released party."</em></p>
+      </div>
+      The Guest understands this means the Guest is releasing claims the Guest does not yet know about, and does so voluntarily and with full knowledge.
+    </li>
+    <li><strong>Premises Liability.</strong> <span class="bold-caps">The Company is not liable for any injury, loss, or damage</span> arising from the condition of the facility, parking areas, common areas, stairways, hallways, locker rooms, restrooms, or surrounding areas, including wet or slippery surfaces, poor lighting, structural conditions, criminal acts of third parties, parking lot incidents (including vehicle damage, theft, or personal injury), or any condition not under the Company's direct operational control.</li>
+  </ol>
+</div>
+
+<!-- SECTION 5: INDEMNIFICATION -->
+<div class="section">
+  <h2>5. Indemnification</h2>
+  <p>The Guest agrees to indemnify, defend, and hold harmless the Released Parties from and against any and all claims, demands, causes of action, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees and court costs) arising out of or related to: the Guest's use of the facility, equipment, or services; the Guest's breach of any term of this Waiver; any injury or damage caused by the Guest to any other person or property; any claim brought by or on behalf of the Guest, the Guest's heirs, executors, administrators, or assigns against any Released Party; and the Guest's violation of any law, regulation, or facility rule.</p>
+</div>
+
+<!-- SECTION 6: MEDIA / COMMUNICABLE DISEASE / MINORS -->
+<div class="section">
+  <h2>6. Media, Communicable Disease &amp; Minors</h2>
+  <ol type="a">
+    <li><strong>Media Consent.</strong> The Guest grants the Company a perpetual, irrevocable, royalty-free, worldwide license to photograph, film, and record the Guest and to use the Guest's name, likeness, image, and voice in any media for promotional and marketing purposes. The Guest may opt out by notifying staff in writing before the visit.</li>
+    <li><strong>Surveillance.</strong> The Guest acknowledges and consents to video surveillance in common areas for safety and security purposes.</li>
+    <li><strong>Communicable Disease.</strong> The Guest acknowledges that use of a fitness facility inherently involves the risk of exposure to communicable diseases (including COVID-19, influenza, MRSA, and other bacterial or viral infections). The Company cannot guarantee a disease-free environment. The Guest agrees not to use the facility if experiencing symptoms of any communicable illness and to follow all posted hygiene protocols.</li>
+    <li><strong>Age &amp; Minors.</strong> The facility is intended for individuals aged 18 and older. Guests aged 16&ndash;17 must have this Waiver signed by a parent or legal guardian, who thereby agrees to all terms on behalf of the minor, assumes all risks on behalf of the minor, and releases the Released Parties from all claims related to the minor's use of the facility. Children under 16 are not permitted in fitness areas.</li>
+  </ol>
+</div>
+
+<!-- SECTION 7: DISPUTE RESOLUTION -->
+<div class="section">
+  <h2>7. Dispute Resolution</h2>
+  <ol type="a">
+    <li><strong>Governing Law &amp; Venue.</strong> This Waiver is governed by the laws of the State of California. Any dispute shall be resolved exclusively in Los Angeles County, California.</li>
+    <li><strong>Arbitration &amp; Class Waiver.</strong> Any dispute, claim, or controversy arising out of or relating to this Waiver shall be resolved by final and binding arbitration in Los Angeles County, administered by JAMS or the American Arbitration Association. <span class="bold-caps">The Guest waives the right to a jury trial and to participate in any class action, collective action, or representative proceeding.</span></li>
+    <li><strong>Attorneys' Fees &amp; Limitations.</strong> The prevailing party in any dispute shall be entitled to recover its reasonable attorneys' fees and costs. Any claim arising under this Waiver must be brought within one (1) year of the date the claim accrues, or it is forever barred.</li>
+  </ol>
+</div>
+
+<!-- SECTION 8: GENERAL -->
+<div class="section">
+  <h2>8. General Provisions</h2>
+  <ol type="a">
+    <li><strong>Entire Agreement.</strong> This Waiver constitutes the entire agreement between the Parties regarding the Guest's day-pass visit and supersedes all prior representations.</li>
+    <li><strong>Severability.</strong> If any provision is found unenforceable, the remaining provisions shall remain in full force and effect, and the unenforceable provision shall be reformed to the minimum extent necessary while preserving its original intent.</li>
+    <li><strong>Binding Effect &amp; Survival.</strong> This Waiver is binding upon the Guest and the Guest's heirs, executors, administrators, assigns, and personal representatives. The assumption of risk, waiver, indemnification, and dispute resolution provisions shall survive the Guest's visit.</li>
+    <li><strong>Electronic Signatures.</strong> This Waiver may be executed by electronic signature, which shall be deemed an original.</li>
+  </ol>
+</div>
+
+<!-- SECTION 9: ACKNOWLEDGMENT & SIGNATURES -->
+<div class="section no-footer-page">
+  <h2>9. Acknowledgment</h2>
+
+  <div class="highlight-box">
+    <p><strong>BY SIGNING BELOW, THE GUEST ACKNOWLEDGES AND AGREES TO THE FOLLOWING:</strong></p>
+  </div>
+
+  <p>The Guest has read this entire Waiver and understands and agrees to all of its terms. The Guest acknowledges that: <strong>(i)</strong> the Guest is voluntarily giving up substantial legal rights, including the right to sue the Released Parties for negligence; <strong>(ii)</strong> the Guest knowingly and voluntarily assumes ALL risks of injury, illness, disability, or death associated with use of the Company's facility, equipment, and services; <strong>(iii)</strong> the Guest has had the opportunity to consult independent legal counsel before signing; and <strong>(iv)</strong> the Guest is signing this Waiver freely, voluntarily, and without coercion.</p>
+</div>
+
+<!-- SIGNATURES -->
+<div class="sig-block no-footer-page">
+  <div class="sig-party">
+    <p><strong>GUEST</strong></p>
+    <div class="sig-grid">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Guest Signature</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Date</div>
+      </div>
+    </div>
+    <div class="sig-grid" style="margin-top: 20px;">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Printed Name</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Date of Birth</div>
+      </div>
+    </div>
+    <div class="sig-grid" style="margin-top: 20px;">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Email Address</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Phone Number</div>
+      </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <div class="sig-line"></div>
+      <div class="sig-label">Emergency Contact Name &amp; Phone Number</div>
+    </div>
+  </div>
+
+  <div class="sig-party" style="margin-top: 40px;">
+    <p><strong>PARENT / LEGAL GUARDIAN</strong> (required if Guest is under 18)</p>
+    <div class="sig-grid">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Parent/Guardian Signature</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Date</div>
+      </div>
+    </div>
+    <div class="sig-grid" style="margin-top: 20px;">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Printed Name</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Relationship to Minor</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sig-party" style="margin-top: 40px;">
+    <p><strong>COMPANY REPRESENTATIVE</strong></p>
+    <div class="sig-grid">
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Authorized Signature</div>
+      </div>
+      <div>
+        <div class="sig-line"></div>
+        <div class="sig-label">Date</div>
+      </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <div class="sig-line"></div>
+      <div class="sig-label">Printed Name &amp; Title</div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

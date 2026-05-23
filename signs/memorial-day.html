@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sleek — Memorial Day Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* =====================================================
+     SLEEK — printable sign (portrait letter, 8.5 x 11)
+     Design DNA mirrors sleekfitness.us:
+     black #080808, off-white #f8f8f6, Inter, thin italic
+     headline accents, wide-tracked uppercase labels,
+     subtle radial vignettes, hairline dividers.
+     ===================================================== */
+
+  @page {
+    size: 8.5in 11in;
+    margin: 0;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    /* Light variant — ink-on-paper. --black is the sign's surface
+       (paper) and --white is the foreground (ink); the names stay
+       to mirror the site's CSS, the roles flip. */
+    --black: #f4f3ef;
+    --white: #0a0a0a;
+    --gray: #555553;
+    --gray-dim: #6e6e6c;
+    --gray-dimmer: #8a8a87;
+    --hair: rgba(0, 0, 0, 0.18);
+    --hair-strong: rgba(0, 0, 0, 0.32);
+  }
+
+  html, body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* On-screen: center the sign on a dark backdrop so it
+     reads like a poster before you print it. */
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .sign {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    background: var(--black);
+    padding: 0.8in 0.85in;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  }
+
+  /* Subtle paper warmth — same gradient recipe as the site,
+     inverted to gentle ink washes on the off-white surface. */
+  .sign::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 15% 40%, rgba(0,0,0,0.025) 0%, transparent 60%),
+      radial-gradient(ellipse at 85% 15%, rgba(0,0,0,0.018) 0%, transparent 55%);
+  }
+
+  .sign > * { position: relative; z-index: 1; }
+
+  /* ===== Header strip ===== */
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .logo {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .head-meta {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ===== Main body ===== */
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 36px 0 28px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 36px;
+    height: 1px;
+    background: var(--gray);
+  }
+
+  /* ===== Hero — single event, single hours block ===== */
+  .hero {
+    border-top: 1px solid var(--hair-strong);
+    border-bottom: 1px solid var(--hair-strong);
+    padding: 80px 0 84px;
+    text-align: center;
+  }
+  .hero-time {
+    font-size: 132px;
+    font-weight: 200;
+    letter-spacing: -4px;
+    line-height: 0.95;
+    color: var(--white);
+    white-space: nowrap;
+    margin-bottom: 24px;
+  }
+  .hero-time em {
+    font-style: italic;
+    font-weight: 200;
+    color: var(--gray);
+    margin: 0 6px;
+  }
+  .hero-date {
+    font-size: 32px;
+    font-weight: 200;
+    font-style: italic;
+    letter-spacing: -0.4px;
+    color: var(--gray);
+  }
+
+  /* ===== Footer strip ===== */
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 22px;
+    border-top: 1px solid var(--hair);
+    margin-top: auto;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-dimmer);
+  }
+  .foot .effective strong {
+    display: block;
+    color: var(--white);
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    text-transform: none;
+    font-size: 13px;
+  }
+  .foot .contact {
+    text-align: right;
+  }
+  .foot .contact strong {
+    display: block;
+    color: var(--white);
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    text-transform: none;
+    font-size: 13px;
+  }
+
+  /* ===== Print ===== */
+  @media print {
+    body {
+      padding: 0;
+      display: block;
+    }
+    .sign {
+      width: 100%;
+      height: 100%;
+      box-shadow: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="sign">
+
+    <div class="head">
+      <div class="logo">Sleek</div>
+      <div class="head-meta">Koreatown &nbsp;·&nbsp; Los Angeles</div>
+    </div>
+
+    <div class="body">
+      <div class="eyebrow">Memorial Day &nbsp;·&nbsp; Holiday Hours</div>
+
+      <div class="hero">
+        <div class="hero-time">7am <em>&mdash;</em> 9pm</div>
+        <div class="hero-date">Monday, May 25.</div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <div class="effective">
+        Sleek Fitness
+        <strong>Koreatown Plaza, Los Angeles</strong>
+      </div>
+      <div class="contact">
+        Questions
+        <strong>info@sleekfitness.us</strong>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
