@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sleek — Diamond Membership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: letter portrait;
+    margin: 0;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #050505;
+    --black-2: #0c0c0c;
+    --black-3: #141414;
+    --white: #f8f8f6;
+    --ice: #e8ecf2;
+
+    --cyan: #67e8f9;
+    --sky:  #93c5fd;
+    --blue: #60a5fa;
+    --indigo: #a5b4fc;
+    --violet: #c4b5fd;
+    --pink: #f0abfc;
+    --rose: #fb7185;
+
+    --gray: #8a8a8a;
+    --gray-2: #5a5a5a;
+    --gray-dim: #3a3a3a;
+    --hair: rgba(255, 255, 255, 0.10);
+    --hair-strong: rgba(255, 255, 255, 0.22);
+    --hair-bright: rgba(255, 255, 255, 0.45);
+  }
+
+  html, body { margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 8.5in;
+    height: 11in;
+    padding: 0.5in 0.6in 0.45in;
+    margin: 0;
+    background:
+      radial-gradient(ellipse at 78% 18%, rgba(103, 232, 249, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 22% 78%, rgba(196, 181, 253, 0.07) 0%, transparent 50%),
+      var(--black);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--hair-strong);
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 9px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .header-meta {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 500;
+  }
+
+  /* INTRO */
+  .intro {
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 28px;
+    position: relative;
+    z-index: 2;
+  }
+  .intro-left { flex: 1; min-width: 0; }
+  .intro-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--ice);
+    font-weight: 600;
+  }
+  .eyebrow .brand-diamond {
+    font-weight: 800;
+    letter-spacing: 7px;
+    background: linear-gradient(110deg, #a5f3fc 0%, #67e8f9 18%, #93c5fd 38%, #a5b4fc 55%, #c4b5fd 75%, #f0abfc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .gem-mini {
+    display: inline-block;
+    transform: rotate(45deg);
+  }
+  .gem-mini.tiny   { width: 3px; height: 3px; }
+  .gem-mini.small  { width: 5px; height: 5px; }
+  .gem-mini.med    { width: 8px; height: 8px; }
+  .gem-mini.cyan   { background: linear-gradient(135deg, #a5f3fc 0%, var(--cyan) 100%); }
+  .gem-mini.blue   { background: linear-gradient(135deg, var(--sky) 0%, var(--blue) 100%); }
+  .gem-mini.indigo { background: linear-gradient(135deg, var(--indigo) 0%, var(--violet) 100%); }
+  .gem-mini.violet { background: linear-gradient(135deg, var(--violet) 0%, var(--pink) 100%); }
+  .gem-mini.pink   { background: linear-gradient(135deg, var(--pink) 0%, var(--rose) 100%); }
+
+  h1 {
+    margin-top: 18px;
+    font-size: 62px;
+    line-height: 0.95;
+    font-weight: 200;
+    letter-spacing: -2.5px;
+    color: var(--white);
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 200;
+    background: linear-gradient(110deg, #a5f3fc 0%, #c4b5fd 55%, #f0abfc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .effective {
+    text-align: right;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 600;
+    border: 1px solid var(--hair-bright);
+    padding: 12px 16px 10px;
+    line-height: 1.4;
+    white-space: nowrap;
+    background: rgba(103, 232, 249, 0.06);
+  }
+  .effective .effective-date {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-top: 3px;
+    background: linear-gradient(110deg, var(--cyan) 0%, var(--indigo) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* HERO PRICE CARD (12-month) */
+  .hero {
+    margin-top: 28px;
+    background: linear-gradient(135deg, #131318 0%, #08080a 100%);
+    border: 1px solid var(--hair-bright);
+    padding: 56px 34px 30px;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+  }
+  /* Thin prismatic accent bar across the top of the hero */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cyan) 0%, var(--sky) 25%, var(--indigo) 50%, var(--violet) 75%, var(--pink) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    position: absolute;
+    top: 22px;
+    left: 28px;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--black);
+    background: linear-gradient(110deg, #e8ecf2 0%, #c4b5fd 50%, #f0abfc 100%);
+    padding: 8px 13px 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+  }
+  .hero-badge .badge-dia {
+    width: 7px; height: 7px;
+    background: var(--black);
+    transform: rotate(45deg);
+    display: inline-block;
+  }
+
+  .hero-row {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 28px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tier-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--ice);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-tier-name {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    color: var(--white);
+  }
+  .hero-tier-name em {
+    font-style: italic;
+    font-weight: 200;
+    background: linear-gradient(110deg, #a5f3fc 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-desc {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--gray);
+    font-weight: 300;
+    max-width: 280px;
+  }
+
+  .hero-price { text-align: right; }
+  .hero-price-amount {
+    font-size: 78px;
+    line-height: 1;
+    font-weight: 200;
+    letter-spacing: -3.5px;
+    background: linear-gradient(170deg, #ffffff 0%, #e8ecf2 50%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .hero-price-amount .dollar {
+    font-size: 30px;
+    font-weight: 300;
+    vertical-align: top;
+    margin-right: 2px;
+    position: relative;
+    top: 14px;
+  }
+  .hero-price-per {
+    font-size: 11px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  .hero-savings {
+    margin-top: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: var(--cyan);
+  }
+
+  /* SECONDARY TIER GRID */
+  .tiers {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tier {
+    border: 1px solid var(--hair-strong);
+    background: var(--black-2);
+    padding: 22px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 148px;
+    position: relative;
+  }
+  .tier::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    pointer-events: none;
+  }
+  .tier.t-upfront::before { background: linear-gradient(90deg, var(--cyan), var(--sky)); }
+  .tier.t-six::before     { background: linear-gradient(90deg, var(--sky), var(--indigo)); }
+  .tier.t-three::before   { background: linear-gradient(90deg, var(--indigo), var(--violet)); }
+  .tier.t-mtm::before     { background: linear-gradient(90deg, var(--violet), var(--pink)); }
+
+  .tier-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tier-name {
+    margin-top: 6px;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .tier-name em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ice);
+  }
+
+  .tier-price {
+    margin-top: 14px;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+    color: var(--white);
+  }
+  .tier-price .dollar {
+    font-size: 17px;
+    font-weight: 400;
+    vertical-align: top;
+    margin-right: 1px;
+    position: relative;
+    top: 6px;
+    color: var(--cyan);
+  }
+  .tier-price .per {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray);
+    letter-spacing: 0;
+    margin-left: 4px;
+  }
+
+  .tier-foot {
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--gray);
+    font-weight: 400;
+  }
+  .tier-foot strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* NOTES */
+  .notes {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hair);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--gray);
+    font-weight: 400;
+    position: relative;
+    z-index: 2;
+  }
+  .notes .note-block { flex: 1; }
+  .notes strong { color: var(--white); font-weight: 600; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--hair);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray-2);
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="header">
+    <div class="logo">Sleek</div>
+    <div class="header-meta">Koreatown &nbsp;·&nbsp; Los Angeles</div>
+  </div>
+
+  <div class="intro">
+    <div class="intro-left">
+      <div class="eyebrow">
+        <span class="brand-diamond">Diamond</span> Membership
+      </div>
+      <h1>Lock in your rate.<br><em>Train at the top tier.</em></h1>
+    </div>
+    <div class="intro-right">
+      <div class="effective">
+        Effective<span class="effective-date">June 1, 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO: 12-month commitment -->
+  <div class="hero">
+
+    <div class="hero-badge">
+      <span class="badge-dia"></span>
+      Best Value
+    </div>
+
+    <div class="hero-row">
+      <div>
+        <div class="hero-tier-label">
+          <span class="gem-mini med indigo"></span>
+          12-Month Commitment
+        </div>
+        <div class="hero-tier-name">A full year at the<br><em>lowest monthly rate.</em></div>
+        <div class="hero-desc">
+          First &amp; last month ($200) due at signing. The remaining ten
+          months are billed monthly at $100. Unlimited access for the full
+          year at our lowest rate.
+        </div>
+      </div>
+      <div class="hero-price">
+        <div class="hero-price-amount"><span class="dollar">$</span>100</div>
+        <div class="hero-price-per">per month</div>
+        <div class="hero-savings">Save $600 vs month-to-month</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECONDARY TIERS -->
+  <div class="tiers">
+
+    <div class="tier t-upfront">
+      <div class="tier-label">
+        <span class="gem-mini small cyan"></span>
+        1-Year Upfront
+      </div>
+      <div class="tier-name">Pay once, <em>done for the year.</em></div>
+      <div class="tier-price"><span class="dollar">$</span>1,080<span class="per"> paid in full</span></div>
+      <div class="tier-foot">No monthly billing. <strong>Save $720 vs MTM.</strong></div>
+    </div>
+
+    <div class="tier t-six">
+      <div class="tier-label">
+        <span class="gem-mini small blue"></span>
+        6-Month Commitment
+      </div>
+      <div class="tier-name">Half a year, <em>locked in.</em></div>
+      <div class="tier-price"><span class="dollar">$</span>110<span class="per"> /mo</span></div>
+      <div class="tier-foot">$660 total over 6 months. <strong>Save $240.</strong></div>
+    </div>
+
+    <div class="tier t-three">
+      <div class="tier-label">
+        <span class="gem-mini small violet"></span>
+        3-Month Commitment
+      </div>
+      <div class="tier-name">A season of <em>steady training.</em></div>
+      <div class="tier-price"><span class="dollar">$</span>130<span class="per"> /mo</span></div>
+      <div class="tier-foot">$390 total over 3 months. <strong>Save $60.</strong></div>
+    </div>
+
+    <div class="tier t-mtm">
+      <div class="tier-label">
+        <span class="gem-mini small pink"></span>
+        Month-to-Month
+      </div>
+      <div class="tier-name">Fully flexible. <em>Cancel anytime.</em></div>
+      <div class="tier-price"><span class="dollar">$</span>150<span class="per"> /mo</span></div>
+      <div class="tier-foot">No commitment. Pause or cancel on 30 days' notice.</div>
+    </div>
+
+  </div>
+
+  <div class="notes">
+    <div class="note-block">
+      <strong>What's included.</strong> Full open-gym access, 7am&ndash;11pm
+      daily. Strength floor, cardio, showers, towel service. No locker fees.
+    </div>
+    <div class="note-block">
+      <strong>Add-ons.</strong> Pilates unlimited, personal training, and
+      private pilates priced separately. Day passes $50.
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Sleek Fitness &nbsp;&middot;&nbsp; 928 S Western Ave, STE 333</span>
+    <span>sleekfitness.us</span>
+  </div>
+
+</div>
+
+</body>
+</html>

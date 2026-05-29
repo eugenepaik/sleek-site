@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sleek — Pull the Red Pin Only (B&amp;W)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: letter portrait;
+    margin: 0;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --white: #ffffff;
+    --ink: #000000;
+    --ink-soft: #1a1a1a;
+    --gray: #5a5a5a;
+    --gray-dim: #909090;
+    --hair: rgba(0, 0, 0, 0.12);
+    --hair-strong: rgba(0, 0, 0, 0.35);
+  }
+
+  html, body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 8.5in;
+    height: 11in;
+    padding: 0.7in 0.75in;
+    margin: 0 auto;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .logo {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 9px;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .header-meta {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  /* EYEBROW */
+  .eyebrow {
+    margin-top: 56px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  /* HEADLINE */
+  h1 {
+    margin-top: 20px;
+    font-size: 78px;
+    line-height: 0.96;
+    font-weight: 300;
+    letter-spacing: -2.5px;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  h1 .accent-solid {
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 8px;
+  }
+  h1 .accent-outline {
+    font-weight: 700;
+    font-style: italic;
+    -webkit-text-stroke: 1.5px var(--ink);
+    color: transparent;
+  }
+
+  /* COMBINED PIN PANEL */
+  .pins {
+    margin-top: 64px;
+    border: 1.5px solid var(--ink);
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .pin-card {
+    padding: 36px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    position: relative;
+  }
+
+  .pin-card + .pin-card {
+    border-left: 1.5px solid var(--ink);
+  }
+
+  .pin-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  /* Solid filled disc = the one you may touch */
+  .pin-dot-solid {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--ink);
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  /* Hollow disc with diagonal strike = the one you don't touch */
+  .pin-dot-outline {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 4px solid var(--ink);
+    background: var(--white);
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .pin-dot-outline::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -8%;
+    width: 116%;
+    height: 4px;
+    background: var(--ink);
+    transform: translateY(-50%) rotate(-45deg);
+    transform-origin: center;
+  }
+
+  .pin-label {
+    font-size: 11px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 700;
+  }
+
+  .pin-verdict {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .pin-verdict .strong-yes {
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+  }
+  .pin-verdict .strong-no {
+    font-weight: 800;
+    font-style: italic;
+    -webkit-text-stroke: 1px var(--ink);
+  }
+
+  .pin-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--gray);
+    font-weight: 400;
+    margin-top: auto;
+  }
+
+  /* Color hint footnote */
+  .color-hint {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--hair-strong);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  /* NOTE */
+  .note {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hair);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--gray);
+    font-weight: 400;
+    max-width: 640px;
+  }
+  .note strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--hair);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray-dim);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="header">
+    <div class="logo">Sleek</div>
+    <div class="header-meta">Koreatown &nbsp;·&nbsp; Los Angeles</div>
+  </div>
+
+  <div class="eyebrow">Equipment Notice</div>
+
+  <h1>Pull the <span class="accent-solid">red</span> pin.<br><em>Leave the <span class="accent-outline">blue</span> pin alone.</em></h1>
+
+  <div class="pins">
+
+    <div class="pin-card">
+      <div class="pin-head">
+        <div class="pin-dot-solid"></div>
+        <div class="pin-label">Red Pin</div>
+      </div>
+      <div class="pin-verdict"><span class="strong-yes">Pull</span> to adjust</div>
+      <div class="pin-desc">
+        This is the weight-selector pin. Pull it out, choose your weight,
+        and slide it back in.
+      </div>
+      <div class="color-hint">Solid &middot; Red</div>
+    </div>
+
+    <div class="pin-card">
+      <div class="pin-head">
+        <div class="pin-dot-outline"></div>
+        <div class="pin-label">Blue Pin</div>
+      </div>
+      <div class="pin-verdict"><span class="strong-no">Do not</span> pull</div>
+      <div class="pin-desc">
+        This pin holds the machine together. Removing it can damage the
+        equipment and cause injury.
+      </div>
+      <div class="color-hint">Outlined &middot; Blue</div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    If the blue pin looks loose or out of place, <strong>do not use the
+    machine</strong> &mdash; please let the front desk know so we can take a
+    look. Thanks for helping us keep the floor in shape.
+  </div>
+
+  <div class="footer">
+    <span>Sleek Fitness</span>
+    <span>Thank you</span>
+  </div>
+
+</div>
+
+</body>
+</html>
