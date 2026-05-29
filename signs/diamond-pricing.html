@@ -15,21 +15,22 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --white: #ffffff;
-    --paper: #fafaf9;
-    --ink: #0a0a0a;
-    --ink-soft: #1f1f1f;
-    --gray: #6b6b6b;
-    --gray-dim: #9a9a9a;
-    --gray-line: #e6e6e6;
-    --hair: rgba(0, 0, 0, 0.08);
-    --hair-strong: rgba(0, 0, 0, 0.22);
-    --accent: #0a0a0a;
+    --black: #050505;
+    --black-2: #0c0c0c;
+    --black-3: #141414;
+    --white: #f8f8f6;
+    --ice: #e8ecf2;
+    --gray: #8a8a8a;
+    --gray-2: #5a5a5a;
+    --gray-dim: #3a3a3a;
+    --hair: rgba(255, 255, 255, 0.10);
+    --hair-strong: rgba(255, 255, 255, 0.22);
+    --hair-bright: rgba(255, 255, 255, 0.45);
   }
 
   html, body {
-    background: var(--white);
-    color: var(--ink);
+    background: var(--black);
+    color: var(--white);
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
@@ -37,17 +38,43 @@
     print-color-adjust: exact;
   }
 
+  html, body { margin: 0; padding: 0; }
+
   .sheet {
     width: 8.5in;
     height: 11in;
-    padding: 0.6in 0.65in;
-    margin: 0 auto;
-    background: var(--white);
+    padding: 0.55in 0.6in;
+    margin: 0;
+    background: var(--black);
     position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
+
+  /* Background ambient diamonds (very subtle, decorative) */
+  .bg-diamond {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.06;
+    z-index: 0;
+  }
+  .bg-diamond.one   { top: 3.6in; right: -1.4in; width: 5.5in; transform: rotate(-8deg); }
+  .bg-diamond.two   { bottom: -0.8in; left: -0.9in; width: 3.5in; transform: rotate(14deg); opacity: 0.05; }
+
+  /* Subtle gradient vignette */
+  .sheet::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 18% 22%, rgba(255,255,255,0.045) 0%, transparent 55%),
+      radial-gradient(ellipse at 88% 78%, rgba(232,236,242,0.03) 0%, transparent 55%);
+    z-index: 0;
+  }
+
+  .sheet > * { position: relative; z-index: 1; }
 
   /* HEADER */
   .header {
@@ -55,7 +82,7 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 22px;
-    border-bottom: 1.5px solid var(--ink);
+    border-bottom: 1px solid var(--hair-strong);
   }
 
   .logo {
@@ -63,7 +90,7 @@
     font-weight: 500;
     letter-spacing: 9px;
     text-transform: uppercase;
-    color: var(--ink);
+    color: var(--white);
   }
 
   .header-meta {
@@ -76,47 +103,51 @@
 
   /* INTRO */
   .intro {
-    margin-top: 38px;
+    margin-top: 36px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    gap: 24px;
+    align-items: flex-start;
+    gap: 28px;
   }
-
   .intro-left { flex: 1; }
 
   .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
     font-size: 11px;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--ice);
     font-weight: 600;
   }
-
-  .diamond-glyph {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: var(--ink);
-    transform: rotate(45deg);
-    position: relative;
-    top: -1px;
+  .eyebrow .micro-diamonds {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
   }
+  .eyebrow .md {
+    width: 7px;
+    height: 7px;
+    background: var(--ice);
+    transform: rotate(45deg);
+    display: inline-block;
+  }
+  .eyebrow .md.small { width: 4px; height: 4px; opacity: 0.6; }
+  .eyebrow .md.smaller { width: 3px; height: 3px; opacity: 0.35; }
 
   h1 {
-    margin-top: 14px;
-    font-size: 64px;
+    margin-top: 18px;
+    font-size: 62px;
     line-height: 0.95;
-    font-weight: 300;
+    font-weight: 200;
     letter-spacing: -2.5px;
-    color: var(--ink);
+    color: var(--white);
   }
   h1 em {
     font-style: italic;
-    font-weight: 300;
+    font-weight: 200;
+    color: var(--ice);
   }
 
   .effective {
@@ -124,42 +155,68 @@
     font-size: 10px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--ink);
+    color: var(--white);
     font-weight: 600;
-    border: 1.5px solid var(--ink);
-    padding: 10px 14px 8px;
+    border: 1px solid var(--hair-bright);
+    padding: 12px 16px 10px;
     line-height: 1.4;
     white-space: nowrap;
+    background: rgba(255, 255, 255, 0.02);
   }
   .effective .effective-date {
     display: block;
     font-size: 13px;
     letter-spacing: 1.5px;
     font-weight: 700;
-    margin-top: 2px;
+    margin-top: 3px;
+    color: var(--ice);
   }
 
   /* HERO PRICE CARD (12-month) */
   .hero {
-    margin-top: 40px;
-    background: var(--ink);
-    color: var(--white);
-    padding: 32px 36px;
+    margin-top: 32px;
+    background: linear-gradient(135deg, #181818 0%, #080808 100%);
+    border: 1px solid var(--hair-bright);
+    padding: 56px 34px 30px;
     position: relative;
     overflow: hidden;
+    min-height: 220px;
+  }
+
+  /* Faceted diamond watermark inside hero */
+  .hero-watermark {
+    position: absolute;
+    right: 30%;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 200px;
+    height: 200px;
+    opacity: 0.07;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .hero-badge {
     position: absolute;
-    top: 24px;
-    right: 28px;
+    top: 22px;
+    left: 28px;
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
     font-weight: 700;
-    color: var(--ink);
-    background: var(--white);
-    padding: 7px 12px;
+    color: var(--black);
+    background: var(--ice);
+    padding: 8px 13px 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+  }
+  .hero-badge .badge-dia {
+    width: 7px; height: 7px;
+    background: var(--black);
+    transform: rotate(45deg);
+    display: inline-block;
   }
 
   .hero-row {
@@ -167,85 +224,100 @@
     grid-template-columns: 1.4fr 1fr;
     gap: 28px;
     align-items: end;
+    position: relative;
+    z-index: 2;
   }
 
   .hero-tier-label {
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--gray-dim);
+    color: var(--gray);
     font-weight: 500;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-tier-label::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--ice);
+    transform: rotate(45deg);
+    display: inline-block;
   }
 
   .hero-tier-name {
     font-size: 28px;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: -0.5px;
     line-height: 1.1;
     margin-bottom: 14px;
+    color: var(--white);
   }
   .hero-tier-name em {
     font-style: italic;
-    font-weight: 300;
+    font-weight: 200;
+    color: var(--ice);
   }
 
   .hero-desc {
-    font-size: 13px;
+    font-size: 12.5px;
     line-height: 1.5;
-    color: var(--gray-dim);
+    color: var(--gray);
     font-weight: 300;
     max-width: 280px;
   }
 
-  .hero-price {
-    text-align: right;
-  }
+  .hero-price { text-align: right; }
   .hero-price-amount {
-    font-size: 76px;
+    font-size: 78px;
     line-height: 1;
-    font-weight: 300;
-    letter-spacing: -3px;
+    font-weight: 200;
+    letter-spacing: -3.5px;
+    color: var(--white);
   }
   .hero-price-amount .dollar {
-    font-size: 32px;
-    font-weight: 400;
+    font-size: 30px;
+    font-weight: 300;
     vertical-align: top;
     margin-right: 2px;
     position: relative;
     top: 14px;
+    color: var(--ice);
   }
   .hero-price-per {
     font-size: 11px;
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
-    color: var(--gray-dim);
+    color: var(--gray);
     font-weight: 500;
     margin-top: 10px;
   }
   .hero-savings {
     margin-top: 6px;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 500;
-    letter-spacing: 0.5px;
-    color: var(--white);
+    letter-spacing: 0.3px;
+    color: var(--ice);
   }
 
   /* SECONDARY TIER GRID */
   .tiers {
-    margin-top: 24px;
+    margin-top: 22px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    gap: 14px;
   }
 
   .tier {
     border: 1px solid var(--hair-strong);
+    background: var(--black-2);
     padding: 22px 24px 20px;
-    background: var(--white);
     display: flex;
     flex-direction: column;
-    min-height: 150px;
+    min-height: 148px;
+    position: relative;
   }
 
   .tier-label {
@@ -254,35 +326,48 @@
     text-transform: uppercase;
     color: var(--gray);
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tier-label::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--gray);
+    transform: rotate(45deg);
+    display: inline-block;
   }
 
   .tier-name {
-    margin-top: 4px;
-    font-size: 18px;
-    font-weight: 500;
+    margin-top: 6px;
+    font-size: 17px;
+    font-weight: 400;
     letter-spacing: -0.3px;
-    color: var(--ink);
+    color: var(--white);
+    line-height: 1.2;
   }
   .tier-name em {
     font-style: italic;
     font-weight: 300;
+    color: var(--ice);
   }
 
   .tier-price {
-    margin-top: 16px;
+    margin-top: 14px;
     font-size: 36px;
     line-height: 1;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: -1.5px;
-    color: var(--ink);
+    color: var(--white);
   }
   .tier-price .dollar {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 400;
     vertical-align: top;
     margin-right: 1px;
     position: relative;
     top: 6px;
+    color: var(--ice);
   }
   .tier-price .per {
     font-size: 13px;
@@ -294,45 +379,45 @@
 
   .tier-foot {
     margin-top: auto;
-    padding-top: 14px;
-    font-size: 12px;
-    line-height: 1.45;
+    padding-top: 12px;
+    font-size: 11.5px;
+    line-height: 1.5;
     color: var(--gray);
     font-weight: 400;
   }
   .tier-foot strong {
-    color: var(--ink);
+    color: var(--white);
     font-weight: 600;
   }
 
   /* NOTES */
   .notes {
-    margin-top: 22px;
+    margin-top: 20px;
     padding-top: 16px;
     border-top: 1px solid var(--hair);
     display: flex;
     justify-content: space-between;
     gap: 24px;
-    font-size: 11px;
-    line-height: 1.45;
+    font-size: 10.5px;
+    line-height: 1.5;
     color: var(--gray);
     font-weight: 400;
   }
   .notes .note-block { flex: 1; }
-  .notes strong { color: var(--ink); font-weight: 600; }
+  .notes strong { color: var(--white); font-weight: 600; }
 
   /* FOOTER */
   .footer {
     margin-top: auto;
-    padding-top: 16px;
+    padding-top: 14px;
     border-top: 1px solid var(--hair);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 10px;
+    font-size: 9.5px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--gray-dim);
+    color: var(--gray-2);
     font-weight: 500;
   }
 </style>
@@ -341,6 +426,27 @@
 
 <div class="sheet">
 
+  <!-- Decorative background diamonds -->
+  <svg class="bg-diamond one" viewBox="0 0 200 200" fill="none" stroke="#ffffff" stroke-width="0.6" aria-hidden="true">
+    <!-- Brilliant-cut, top-down, faceted -->
+    <polygon points="100,10 175,75 100,190 25,75" />
+    <polyline points="25,75 175,75" />
+    <polygon points="60,40 100,10 140,40 100,75 60,40" />
+    <polyline points="100,10 100,75" />
+    <polyline points="60,40 100,75 140,40" />
+    <polyline points="25,75 100,190 175,75" />
+    <polyline points="60,75 100,190 140,75" />
+    <polyline points="40,75 100,190" />
+    <polyline points="160,75 100,190" />
+  </svg>
+
+  <svg class="bg-diamond two" viewBox="0 0 200 200" fill="none" stroke="#ffffff" stroke-width="0.6" aria-hidden="true">
+    <polygon points="100,10 175,75 100,190 25,75" />
+    <polyline points="25,75 175,75" />
+    <polyline points="100,10 100,190" />
+    <polyline points="25,75 100,75 175,75" />
+  </svg>
+
   <div class="header">
     <div class="logo">Sleek</div>
     <div class="header-meta">Koreatown &nbsp;·&nbsp; Los Angeles</div>
@@ -348,7 +454,16 @@
 
   <div class="intro">
     <div class="intro-left">
-      <div class="eyebrow"><span class="diamond-glyph"></span> Diamond Membership</div>
+      <div class="eyebrow">
+        <span class="micro-diamonds">
+          <span class="md smaller"></span>
+          <span class="md small"></span>
+          <span class="md"></span>
+          <span class="md small"></span>
+          <span class="md smaller"></span>
+        </span>
+        Diamond Membership
+      </div>
       <h1>Lock in your rate.<br><em>Train at the top tier.</em></h1>
     </div>
     <div class="effective">
@@ -358,7 +473,25 @@
 
   <!-- HERO: 12-month commitment -->
   <div class="hero">
-    <div class="hero-badge">Best Value</div>
+
+    <!-- Faceted diamond watermark behind the price -->
+    <svg class="hero-watermark" viewBox="0 0 200 200" fill="none" stroke="#ffffff" stroke-width="0.8" aria-hidden="true">
+      <polygon points="100,10 175,75 100,190 25,75" />
+      <polyline points="25,75 175,75" />
+      <polygon points="60,40 100,10 140,40 100,75 60,40" />
+      <polyline points="100,10 100,75" />
+      <polyline points="60,40 100,75 140,40" />
+      <polyline points="25,75 100,190 175,75" />
+      <polyline points="60,75 100,190 140,75" />
+      <polyline points="40,75 100,190" />
+      <polyline points="160,75 100,190" />
+    </svg>
+
+    <div class="hero-badge">
+      <span class="badge-dia"></span>
+      Best Value
+    </div>
+
     <div class="hero-row">
       <div>
         <div class="hero-tier-label">12-Month Commitment</div>
@@ -416,7 +549,7 @@
     </div>
     <div class="note-block">
       <strong>Add-ons.</strong> Pilates unlimited, personal training, and
-      private pilates priced separately. Day passes $50. Ask at the front desk.
+      private pilates priced separately. Day passes $50.
     </div>
   </div>
 
