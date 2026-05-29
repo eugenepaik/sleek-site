@@ -52,7 +52,7 @@
   .sheet {
     width: 8.5in;
     height: 11in;
-    padding: 0.55in 0.6in;
+    padding: 0.5in 0.6in 0.45in;
     margin: 0;
     background:
       radial-gradient(ellipse at 78% 18%, rgba(103, 232, 249, 0.08) 0%, transparent 50%),
@@ -70,9 +70,8 @@
     pointer-events: none;
     z-index: 0;
   }
-  .bg-diamond.one   { top: 4.0in; right: -1.5in; width: 5.0in; transform: rotate(-8deg); opacity: 0.12; }
-  .bg-diamond.two   { bottom: -0.9in; left: -0.9in; width: 3.0in; transform: rotate(14deg); opacity: 0.10; }
-  .bg-diamond.three { top: 1.4in;  right: 0.4in; width: 0.5in; opacity: 0.45; }
+  .bg-diamond.one   { top: -1.0in; right: -2.0in; width: 4.5in; transform: rotate(-12deg); opacity: 0.07; }
+  .bg-diamond.two   { bottom: -1.4in; left: -1.4in; width: 3.5in; transform: rotate(18deg); opacity: 0.07; }
 
   .sheet > .sheet-content { position: relative; z-index: 1; display: contents; }
 
@@ -120,7 +119,19 @@
     position: relative;
     z-index: 2;
   }
-  .intro-left { flex: 1; }
+  .intro-left { flex: 1; min-width: 0; }
+  .intro-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+  .intro-gem {
+    width: 96px;
+    height: 96px;
+    display: block;
+  }
 
   .eyebrow {
     display: inline-flex;
@@ -196,42 +207,20 @@
   /* HERO PRICE CARD (12-month) */
   .hero {
     margin-top: 28px;
-    background:
-      radial-gradient(ellipse at 50% 100%, rgba(196, 181, 253, 0.10) 0%, transparent 60%),
-      radial-gradient(ellipse at 50% 0%, rgba(103, 232, 249, 0.10) 0%, transparent 60%),
-      linear-gradient(135deg, #181820 0%, #08080c 100%);
+    background: linear-gradient(135deg, #131318 0%, #08080a 100%);
     border: 1px solid var(--hair-bright);
     padding: 56px 34px 30px;
     position: relative;
     overflow: hidden;
-    min-height: 290px;
+    min-height: 250px;
   }
-
-  /* Prismatic edge glow on the hero */
-  .hero::before {
+  /* Thin prismatic accent bar across the top of the hero */
+  .hero::after {
     content: '';
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border: 1px solid transparent;
-    background:
-      linear-gradient(110deg, rgba(103,232,249,0.4), rgba(196,181,253,0.4), rgba(240,171,252,0.4)) border-box;
-    mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    mask-composite: exclude;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    opacity: 0.7;
-  }
-
-  .hero-watermark {
-    position: absolute;
-    right: 28%;
-    top: 50%;
-    transform: translate(0, -50%);
-    width: 220px;
-    height: 220px;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cyan) 0%, var(--sky) 25%, var(--indigo) 50%, var(--violet) 75%, var(--pink) 100%);
     pointer-events: none;
     z-index: 1;
   }
@@ -574,16 +563,9 @@
 
 <div class="sheet">
 
-  <!-- Decorative background diamonds -->
+  <!-- Decorative outline diamonds in the outer corners (well clear of content) -->
   <svg class="bg-diamond one" aria-hidden="true"><use href="#diamondLine" /></svg>
   <svg class="bg-diamond two" aria-hidden="true"><use href="#diamondLine" /></svg>
-  <svg class="bg-diamond three" aria-hidden="true"><use href="#diamondPrism" /></svg>
-
-  <!-- Sparkles scattered on page -->
-  <svg class="sparkle" style="top: 0.95in; right: 1.05in; width: 14px; height: 14px; opacity: 0.85;" aria-hidden="true"><use href="#sparkle" /></svg>
-  <svg class="sparkle" style="top: 2.15in; right: 2.1in; width: 9px; height: 9px; opacity: 0.7;" aria-hidden="true"><use href="#sparkle" /></svg>
-  <svg class="sparkle" style="top: 4.6in; left: 4.0in; width: 11px; height: 11px; opacity: 0.65;" aria-hidden="true"><use href="#sparkle" /></svg>
-  <svg class="sparkle" style="top: 5.3in; right: 0.95in; width: 8px; height: 8px; opacity: 0.6;" aria-hidden="true"><use href="#sparkle" /></svg>
 
   <div class="header">
     <div class="logo">Sleek</div>
@@ -604,16 +586,16 @@
       </div>
       <h1>Lock in your rate.<br><em>Train at the top tier.</em></h1>
     </div>
-    <div class="effective">
-      Effective<span class="effective-date">June 1, 2026</span>
+    <div class="intro-right">
+      <svg class="intro-gem" aria-hidden="true"><use href="#diamondPrism" /></svg>
+      <div class="effective">
+        Effective<span class="effective-date">June 1, 2026</span>
+      </div>
     </div>
   </div>
 
   <!-- HERO: 12-month commitment -->
   <div class="hero">
-
-    <!-- Large prismatic diamond -->
-    <svg class="hero-watermark" aria-hidden="true"><use href="#diamondPrism" /></svg>
 
     <div class="hero-badge">
       <span class="badge-dia"></span>
