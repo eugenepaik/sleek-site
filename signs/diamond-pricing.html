@@ -20,6 +20,15 @@
     --black-3: #141414;
     --white: #f8f8f6;
     --ice: #e8ecf2;
+
+    --cyan: #67e8f9;
+    --sky:  #93c5fd;
+    --blue: #60a5fa;
+    --indigo: #a5b4fc;
+    --violet: #c4b5fd;
+    --pink: #f0abfc;
+    --rose: #fb7185;
+
     --gray: #8a8a8a;
     --gray-2: #5a5a5a;
     --gray-dim: #3a3a3a;
@@ -27,6 +36,8 @@
     --hair-strong: rgba(255, 255, 255, 0.22);
     --hair-bright: rgba(255, 255, 255, 0.45);
   }
+
+  html, body { margin: 0; padding: 0; }
 
   html, body {
     background: var(--black);
@@ -38,43 +49,39 @@
     print-color-adjust: exact;
   }
 
-  html, body { margin: 0; padding: 0; }
-
   .sheet {
     width: 8.5in;
     height: 11in;
     padding: 0.55in 0.6in;
     margin: 0;
-    background: var(--black);
+    background:
+      radial-gradient(ellipse at 78% 18%, rgba(103, 232, 249, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 22% 78%, rgba(196, 181, 253, 0.07) 0%, transparent 50%),
+      var(--black);
     position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
 
-  /* Background ambient diamonds (very subtle, decorative) */
+  /* Background ambient diamonds */
   .bg-diamond {
     position: absolute;
     pointer-events: none;
-    opacity: 0.06;
     z-index: 0;
   }
-  .bg-diamond.one   { top: 3.6in; right: -1.4in; width: 5.5in; transform: rotate(-8deg); }
-  .bg-diamond.two   { bottom: -0.8in; left: -0.9in; width: 3.5in; transform: rotate(14deg); opacity: 0.05; }
+  .bg-diamond.one   { top: 4.0in; right: -1.5in; width: 5.0in; transform: rotate(-8deg); opacity: 0.12; }
+  .bg-diamond.two   { bottom: -0.9in; left: -0.9in; width: 3.0in; transform: rotate(14deg); opacity: 0.10; }
+  .bg-diamond.three { top: 1.4in;  right: 0.4in; width: 0.5in; opacity: 0.45; }
 
-  /* Subtle gradient vignette */
-  .sheet::before {
-    content: '';
+  .sheet > .sheet-content { position: relative; z-index: 1; display: contents; }
+
+  /* Sparkle (4-point stars) */
+  .sparkle {
     position: absolute;
-    inset: 0;
     pointer-events: none;
-    background:
-      radial-gradient(ellipse at 18% 22%, rgba(255,255,255,0.045) 0%, transparent 55%),
-      radial-gradient(ellipse at 88% 78%, rgba(232,236,242,0.03) 0%, transparent 55%);
-    z-index: 0;
+    z-index: 1;
   }
-
-  .sheet > * { position: relative; z-index: 1; }
 
   /* HEADER */
   .header {
@@ -83,6 +90,8 @@
     align-items: center;
     padding-bottom: 22px;
     border-bottom: 1px solid var(--hair-strong);
+    position: relative;
+    z-index: 2;
   }
 
   .logo {
@@ -108,6 +117,8 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 28px;
+    position: relative;
+    z-index: 2;
   }
   .intro-left { flex: 1; }
 
@@ -126,15 +137,18 @@
     gap: 6px;
     align-items: center;
   }
-  .eyebrow .md {
-    width: 7px;
-    height: 7px;
-    background: var(--ice);
-    transform: rotate(45deg);
+  .gem-mini {
     display: inline-block;
+    transform: rotate(45deg);
   }
-  .eyebrow .md.small { width: 4px; height: 4px; opacity: 0.6; }
-  .eyebrow .md.smaller { width: 3px; height: 3px; opacity: 0.35; }
+  .gem-mini.tiny   { width: 3px; height: 3px; }
+  .gem-mini.small  { width: 5px; height: 5px; }
+  .gem-mini.med    { width: 8px; height: 8px; }
+  .gem-mini.cyan   { background: linear-gradient(135deg, #a5f3fc 0%, var(--cyan) 100%); }
+  .gem-mini.blue   { background: linear-gradient(135deg, var(--sky) 0%, var(--blue) 100%); }
+  .gem-mini.indigo { background: linear-gradient(135deg, var(--indigo) 0%, var(--violet) 100%); }
+  .gem-mini.violet { background: linear-gradient(135deg, var(--violet) 0%, var(--pink) 100%); }
+  .gem-mini.pink   { background: linear-gradient(135deg, var(--pink) 0%, var(--rose) 100%); }
 
   h1 {
     margin-top: 18px;
@@ -147,7 +161,11 @@
   h1 em {
     font-style: italic;
     font-weight: 200;
-    color: var(--ice);
+    background: linear-gradient(110deg, #a5f3fc 0%, #c4b5fd 55%, #f0abfc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .effective {
@@ -161,7 +179,7 @@
     padding: 12px 16px 10px;
     line-height: 1.4;
     white-space: nowrap;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(103, 232, 249, 0.06);
   }
   .effective .effective-date {
     display: block;
@@ -169,31 +187,53 @@
     letter-spacing: 1.5px;
     font-weight: 700;
     margin-top: 3px;
-    color: var(--ice);
+    background: linear-gradient(110deg, var(--cyan) 0%, var(--indigo) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   /* HERO PRICE CARD (12-month) */
   .hero {
     margin-top: 28px;
-    background: linear-gradient(135deg, #181818 0%, #080808 100%);
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(196, 181, 253, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 0%, rgba(103, 232, 249, 0.10) 0%, transparent 60%),
+      linear-gradient(135deg, #181820 0%, #08080c 100%);
     border: 1px solid var(--hair-bright);
     padding: 56px 34px 30px;
     position: relative;
     overflow: hidden;
-    min-height: 280px;
+    min-height: 290px;
   }
 
-  /* Faceted diamond watermark inside hero */
+  /* Prismatic edge glow on the hero */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(110deg, rgba(103,232,249,0.4), rgba(196,181,253,0.4), rgba(240,171,252,0.4)) border-box;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    opacity: 0.7;
+  }
+
   .hero-watermark {
     position: absolute;
-    right: 30%;
+    right: 28%;
     top: 50%;
     transform: translate(0, -50%);
-    width: 200px;
-    height: 200px;
-    opacity: 0.07;
+    width: 220px;
+    height: 220px;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
   }
 
   .hero-badge {
@@ -205,7 +245,7 @@
     text-transform: uppercase;
     font-weight: 700;
     color: var(--black);
-    background: var(--ice);
+    background: linear-gradient(110deg, #e8ecf2 0%, #c4b5fd 50%, #f0abfc 100%);
     padding: 8px 13px 7px;
     display: inline-flex;
     align-items: center;
@@ -221,7 +261,7 @@
 
   .hero-row {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: 1.35fr 1fr;
     gap: 28px;
     align-items: end;
     position: relative;
@@ -232,19 +272,12 @@
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--ice);
     font-weight: 500;
     margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-  .hero-tier-label::before {
-    content: '';
-    width: 8px; height: 8px;
-    background: var(--ice);
-    transform: rotate(45deg);
-    display: inline-block;
   }
 
   .hero-tier-name {
@@ -258,7 +291,10 @@
   .hero-tier-name em {
     font-style: italic;
     font-weight: 200;
-    color: var(--ice);
+    background: linear-gradient(110deg, #a5f3fc 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .hero-desc {
@@ -275,7 +311,11 @@
     line-height: 1;
     font-weight: 200;
     letter-spacing: -3.5px;
-    color: var(--white);
+    background: linear-gradient(170deg, #ffffff 0%, #e8ecf2 50%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
   .hero-price-amount .dollar {
     font-size: 30px;
@@ -284,7 +324,6 @@
     margin-right: 2px;
     position: relative;
     top: 14px;
-    color: var(--ice);
   }
   .hero-price-per {
     font-size: 11px;
@@ -299,7 +338,7 @@
     font-size: 12.5px;
     font-weight: 500;
     letter-spacing: 0.3px;
-    color: var(--ice);
+    color: var(--cyan);
   }
 
   /* SECONDARY TIER GRID */
@@ -308,6 +347,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px;
+    position: relative;
+    z-index: 2;
   }
 
   .tier {
@@ -319,6 +360,17 @@
     min-height: 148px;
     position: relative;
   }
+  .tier::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    pointer-events: none;
+  }
+  .tier.t-upfront::before { background: linear-gradient(90deg, var(--cyan), var(--sky)); }
+  .tier.t-six::before     { background: linear-gradient(90deg, var(--sky), var(--indigo)); }
+  .tier.t-three::before   { background: linear-gradient(90deg, var(--indigo), var(--violet)); }
+  .tier.t-mtm::before     { background: linear-gradient(90deg, var(--violet), var(--pink)); }
 
   .tier-label {
     font-size: 10px;
@@ -329,13 +381,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-  }
-  .tier-label::before {
-    content: '';
-    width: 5px; height: 5px;
-    background: var(--gray);
-    transform: rotate(45deg);
-    display: inline-block;
   }
 
   .tier-name {
@@ -367,7 +412,7 @@
     margin-right: 1px;
     position: relative;
     top: 6px;
-    color: var(--ice);
+    color: var(--cyan);
   }
   .tier-price .per {
     font-size: 13px;
@@ -402,6 +447,8 @@
     line-height: 1.5;
     color: var(--gray);
     font-weight: 400;
+    position: relative;
+    z-index: 2;
   }
   .notes .note-block { flex: 1; }
   .notes strong { color: var(--white); font-weight: 600; }
@@ -419,33 +466,124 @@
     text-transform: uppercase;
     color: var(--gray-2);
     font-weight: 500;
+    position: relative;
+    z-index: 2;
   }
 </style>
 </head>
 <body>
 
+<!-- Reusable SVG defs: prismatic gradients + diamond symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Vertical prismatic gradient: icy top to violet bottom to rose point -->
+    <linearGradient id="gemPrism" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#a5f3fc" />
+      <stop offset="22%"  stop-color="#67e8f9" />
+      <stop offset="45%"  stop-color="#93c5fd" />
+      <stop offset="65%"  stop-color="#a5b4fc" />
+      <stop offset="82%"  stop-color="#c4b5fd" />
+      <stop offset="100%" stop-color="#f0abfc" />
+    </linearGradient>
+
+    <!-- Glow gradient for crown facets -->
+    <linearGradient id="gemCrownLeft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#bae6fd" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#67e8f9" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="gemCrownCenter" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#bae6fd" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="gemCrownRight" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#f0abfc" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Pavilion (lower) facets -->
+    <linearGradient id="gemPavLeftOuter" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%"  stop-color="#67e8f9" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="gemPavLeftInner" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%"  stop-color="#93c5fd" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="gemPavRightInner" x1="1" y1="0" x2="0.8" y2="1">
+      <stop offset="0%"  stop-color="#c4b5fd" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="gemPavRightOuter" x1="1" y1="0" x2="0.6" y2="1">
+      <stop offset="0%"  stop-color="#f0abfc" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#c026d3" stop-opacity="0.85" />
+    </linearGradient>
+
+    <!-- Faceted brilliant-cut diamond (full color) -->
+    <symbol id="diamondPrism" viewBox="0 0 100 100">
+      <!-- Crown facets -->
+      <polygon points="40,18 10,40 35,40" fill="url(#gemCrownLeft)" />
+      <polygon points="40,18 35,40 50,40" fill="url(#gemCrownCenter)" />
+      <polygon points="40,18 60,18 50,40" fill="#ffffff" fill-opacity="0.92" />
+      <polygon points="60,18 50,40 65,40" fill="url(#gemCrownCenter)" />
+      <polygon points="60,18 65,40 90,40" fill="url(#gemCrownRight)" />
+
+      <!-- Pavilion facets (lower triangle to the culet) -->
+      <polygon points="10,40 35,40 50,94" fill="url(#gemPavLeftOuter)" />
+      <polygon points="35,40 50,40 50,94" fill="url(#gemPavLeftInner)" />
+      <polygon points="50,40 65,40 50,94" fill="url(#gemPavRightInner)" />
+      <polygon points="65,40 90,40 50,94" fill="url(#gemPavRightOuter)" />
+
+      <!-- Facet edge lines (subtle white) -->
+      <g stroke="#ffffff" stroke-width="0.7" stroke-opacity="0.55" fill="none" stroke-linejoin="round">
+        <polygon points="40,18 60,18 90,40 50,94 10,40" />
+        <line x1="10" y1="40" x2="90" y2="40" />
+        <line x1="40" y1="18" x2="35" y2="40" />
+        <line x1="40" y1="18" x2="50" y2="40" />
+        <line x1="60" y1="18" x2="50" y2="40" />
+        <line x1="60" y1="18" x2="65" y2="40" />
+        <line x1="35" y1="40" x2="50" y2="94" />
+        <line x1="50" y1="40" x2="50" y2="94" />
+        <line x1="65" y1="40" x2="50" y2="94" />
+      </g>
+
+      <!-- Sparkle highlight on the table -->
+      <polygon points="42,20 58,20 50,32" fill="#ffffff" fill-opacity="0.55" />
+    </symbol>
+
+    <!-- Line-art outline diamond (for background motifs) -->
+    <symbol id="diamondLine" viewBox="0 0 100 100">
+      <g stroke="url(#gemPrism)" stroke-width="0.9" fill="none" stroke-linejoin="round">
+        <polygon points="40,18 60,18 90,40 50,94 10,40" />
+        <line x1="10" y1="40" x2="90" y2="40" />
+        <line x1="40" y1="18" x2="35" y2="40" />
+        <line x1="40" y1="18" x2="50" y2="40" />
+        <line x1="60" y1="18" x2="50" y2="40" />
+        <line x1="60" y1="18" x2="65" y2="40" />
+        <line x1="35" y1="40" x2="50" y2="94" />
+        <line x1="50" y1="40" x2="50" y2="94" />
+        <line x1="65" y1="40" x2="50" y2="94" />
+      </g>
+    </symbol>
+
+    <!-- 4-point sparkle star -->
+    <symbol id="sparkle" viewBox="0 0 24 24">
+      <path d="M12 0 L13.5 10.5 L24 12 L13.5 13.5 L12 24 L10.5 13.5 L0 12 L10.5 10.5 Z" fill="#ffffff" />
+    </symbol>
+  </defs>
+</svg>
+
 <div class="sheet">
 
   <!-- Decorative background diamonds -->
-  <svg class="bg-diamond one" viewBox="0 0 200 200" fill="none" stroke="#ffffff" stroke-width="0.6" aria-hidden="true">
-    <!-- Brilliant-cut, top-down, faceted -->
-    <polygon points="100,10 175,75 100,190 25,75" />
-    <polyline points="25,75 175,75" />
-    <polygon points="60,40 100,10 140,40 100,75 60,40" />
-    <polyline points="100,10 100,75" />
-    <polyline points="60,40 100,75 140,40" />
-    <polyline points="25,75 100,190 175,75" />
-    <polyline points="60,75 100,190 140,75" />
-    <polyline points="40,75 100,190" />
-    <polyline points="160,75 100,190" />
-  </svg>
+  <svg class="bg-diamond one" aria-hidden="true"><use href="#diamondLine" /></svg>
+  <svg class="bg-diamond two" aria-hidden="true"><use href="#diamondLine" /></svg>
+  <svg class="bg-diamond three" aria-hidden="true"><use href="#diamondPrism" /></svg>
 
-  <svg class="bg-diamond two" viewBox="0 0 200 200" fill="none" stroke="#ffffff" stroke-width="0.6" aria-hidden="true">
-    <polygon points="100,10 175,75 100,190 25,75" />
-    <polyline points="25,75 175,75" />
-    <polyline points="100,10 100,190" />
-    <polyline points="25,75 100,75 175,75" />
-  </svg>
+  <!-- Sparkles scattered on page -->
+  <svg class="sparkle" style="top: 0.95in; right: 1.05in; width: 14px; height: 14px; opacity: 0.85;" aria-hidden="true"><use href="#sparkle" /></svg>
+  <svg class="sparkle" style="top: 2.15in; right: 2.1in; width: 9px; height: 9px; opacity: 0.7;" aria-hidden="true"><use href="#sparkle" /></svg>
+  <svg class="sparkle" style="top: 4.6in; left: 4.0in; width: 11px; height: 11px; opacity: 0.65;" aria-hidden="true"><use href="#sparkle" /></svg>
+  <svg class="sparkle" style="top: 5.3in; right: 0.95in; width: 8px; height: 8px; opacity: 0.6;" aria-hidden="true"><use href="#sparkle" /></svg>
 
   <div class="header">
     <div class="logo">Sleek</div>
@@ -456,11 +594,11 @@
     <div class="intro-left">
       <div class="eyebrow">
         <span class="micro-diamonds">
-          <span class="md smaller"></span>
-          <span class="md small"></span>
-          <span class="md"></span>
-          <span class="md small"></span>
-          <span class="md smaller"></span>
+          <span class="gem-mini tiny cyan"></span>
+          <span class="gem-mini small blue"></span>
+          <span class="gem-mini med indigo"></span>
+          <span class="gem-mini small violet"></span>
+          <span class="gem-mini tiny pink"></span>
         </span>
         Diamond Membership
       </div>
@@ -474,18 +612,8 @@
   <!-- HERO: 12-month commitment -->
   <div class="hero">
 
-    <!-- Faceted diamond watermark behind the price -->
-    <svg class="hero-watermark" viewBox="0 0 200 200" fill="none" stroke="#ffffff" stroke-width="0.8" aria-hidden="true">
-      <polygon points="100,10 175,75 100,190 25,75" />
-      <polyline points="25,75 175,75" />
-      <polygon points="60,40 100,10 140,40 100,75 60,40" />
-      <polyline points="100,10 100,75" />
-      <polyline points="60,40 100,75 140,40" />
-      <polyline points="25,75 100,190 175,75" />
-      <polyline points="60,75 100,190 140,75" />
-      <polyline points="40,75 100,190" />
-      <polyline points="160,75 100,190" />
-    </svg>
+    <!-- Large prismatic diamond -->
+    <svg class="hero-watermark" aria-hidden="true"><use href="#diamondPrism" /></svg>
 
     <div class="hero-badge">
       <span class="badge-dia"></span>
@@ -494,7 +622,10 @@
 
     <div class="hero-row">
       <div>
-        <div class="hero-tier-label">12-Month Commitment</div>
+        <div class="hero-tier-label">
+          <span class="gem-mini med indigo"></span>
+          12-Month Commitment
+        </div>
         <div class="hero-tier-name">A full year at the<br><em>lowest monthly rate.</em></div>
         <div class="hero-desc">
           First &amp; last month ($200) due at signing. The remaining ten
@@ -513,29 +644,41 @@
   <!-- SECONDARY TIERS -->
   <div class="tiers">
 
-    <div class="tier">
-      <div class="tier-label">1-Year Upfront</div>
+    <div class="tier t-upfront">
+      <div class="tier-label">
+        <span class="gem-mini small cyan"></span>
+        1-Year Upfront
+      </div>
       <div class="tier-name">Pay once, <em>done for the year.</em></div>
       <div class="tier-price"><span class="dollar">$</span>1,080<span class="per"> paid in full</span></div>
       <div class="tier-foot">No monthly billing. <strong>Save $720 vs MTM.</strong></div>
     </div>
 
-    <div class="tier">
-      <div class="tier-label">6-Month Commitment</div>
+    <div class="tier t-six">
+      <div class="tier-label">
+        <span class="gem-mini small blue"></span>
+        6-Month Commitment
+      </div>
       <div class="tier-name">Half a year, <em>locked in.</em></div>
       <div class="tier-price"><span class="dollar">$</span>110<span class="per"> /mo</span></div>
       <div class="tier-foot">$660 total over 6 months. <strong>Save $240.</strong></div>
     </div>
 
-    <div class="tier">
-      <div class="tier-label">3-Month Commitment</div>
+    <div class="tier t-three">
+      <div class="tier-label">
+        <span class="gem-mini small violet"></span>
+        3-Month Commitment
+      </div>
       <div class="tier-name">A season of <em>steady training.</em></div>
       <div class="tier-price"><span class="dollar">$</span>130<span class="per"> /mo</span></div>
       <div class="tier-foot">$390 total over 3 months. <strong>Save $60.</strong></div>
     </div>
 
-    <div class="tier">
-      <div class="tier-label">Month-to-Month</div>
+    <div class="tier t-mtm">
+      <div class="tier-label">
+        <span class="gem-mini small pink"></span>
+        Month-to-Month
+      </div>
       <div class="tier-name">Fully flexible. <em>Cancel anytime.</em></div>
       <div class="tier-price"><span class="dollar">$</span>150<span class="per"> /mo</span></div>
       <div class="tier-foot">No commitment. Pause or cancel on 30 days' notice.</div>
