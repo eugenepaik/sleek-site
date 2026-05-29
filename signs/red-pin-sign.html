@@ -16,19 +16,20 @@
 
   :root {
     --black: #080808;
-    --black-2: #0d0d0d;
-    --white: #f8f8f6;
-    --gray: #888;
-    --gray-dim: #555;
-    --hair: rgba(255, 255, 255, 0.08);
-    --hair-strong: rgba(255, 255, 255, 0.15);
-    --red: #e63946;
-    --blue: #2f6fed;
+    --white: #ffffff;
+    --paper: #f8f8f6;
+    --ink: #111111;
+    --gray: #6b6b6b;
+    --gray-dim: #9a9a9a;
+    --hair: rgba(0, 0, 0, 0.08);
+    --hair-strong: rgba(0, 0, 0, 0.18);
+    --red: #d62828;
+    --blue: #1d4ed8;
   }
 
   html, body {
-    background: var(--black);
-    color: var(--white);
+    background: var(--white);
+    color: var(--ink);
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -webkit-print-color-adjust: exact;
@@ -38,23 +39,13 @@
   .sheet {
     width: 8.5in;
     height: 11in;
-    padding: 0.6in 0.7in;
+    padding: 0.7in 0.75in;
     margin: 0 auto;
-    background: var(--black);
+    background: var(--white);
     position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-  }
-
-  .sheet::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse at 15% 30%, rgba(255,255,255,0.04) 0%, transparent 55%),
-      radial-gradient(ellipse at 85% 80%, rgba(255,255,255,0.025) 0%, transparent 55%);
   }
 
   /* HEADER */
@@ -64,8 +55,6 @@
     align-items: center;
     padding-bottom: 24px;
     border-bottom: 1px solid var(--hair-strong);
-    position: relative;
-    z-index: 1;
   }
 
   .logo {
@@ -73,6 +62,7 @@
     font-weight: 500;
     letter-spacing: 9px;
     text-transform: uppercase;
+    color: var(--ink);
   }
 
   .header-meta {
@@ -80,7 +70,7 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--gray);
-    font-weight: 400;
+    font-weight: 500;
   }
 
   /* EYEBROW */
@@ -91,87 +81,101 @@
     text-transform: uppercase;
     color: var(--gray);
     font-weight: 500;
-    position: relative;
-    z-index: 1;
   }
 
   /* HEADLINE */
   h1 {
     margin-top: 20px;
-    font-size: 84px;
-    line-height: 0.95;
+    font-size: 78px;
+    line-height: 0.96;
     font-weight: 300;
     letter-spacing: -2.5px;
-    position: relative;
-    z-index: 1;
+    color: var(--ink);
   }
   h1 em {
     font-style: italic;
     font-weight: 300;
   }
+  h1 .accent-red {
+    color: var(--red);
+    font-weight: 500;
+    font-style: normal;
+  }
+  h1 .accent-blue {
+    color: var(--blue);
+    font-weight: 500;
+    font-style: italic;
+  }
 
-  /* PIN CARDS */
+  /* COMBINED PIN PANEL */
   .pins {
     margin-top: 64px;
+    border: 1px solid var(--hair-strong);
+    border-radius: 8px;
+    background: var(--white);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    position: relative;
-    z-index: 1;
+    overflow: hidden;
   }
 
   .pin-card {
-    border: 1px solid var(--hair-strong);
-    border-radius: 6px;
     padding: 36px 32px 32px;
-    background: var(--black-2);
     display: flex;
     flex-direction: column;
-    min-height: 280px;
+    min-height: 260px;
+    position: relative;
+  }
+
+  .pin-card + .pin-card {
+    border-left: 1px solid var(--hair-strong);
+  }
+
+  .pin-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
   }
 
   .pin-dot {
-    width: 64px;
-    height: 64px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    margin-bottom: 28px;
-    box-shadow: 0 0 0 6px rgba(255,255,255,0.04);
+    flex-shrink: 0;
   }
   .pin-dot.red {
     background: var(--red);
-    box-shadow: 0 0 0 6px rgba(230, 57, 70, 0.18);
+    box-shadow: 0 0 0 5px rgba(214, 40, 40, 0.14);
   }
   .pin-dot.blue {
     background: var(--blue);
-    box-shadow: 0 0 0 6px rgba(47, 111, 237, 0.18);
+    box-shadow: 0 0 0 5px rgba(29, 78, 216, 0.14);
   }
 
   .pin-label {
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 3.5px;
     text-transform: uppercase;
     color: var(--gray);
-    font-weight: 500;
-    margin-bottom: 12px;
+    font-weight: 600;
   }
 
   .pin-verdict {
-    font-size: 48px;
+    font-size: 40px;
     line-height: 1;
     font-weight: 600;
     letter-spacing: -1px;
     margin-bottom: 18px;
+    color: var(--ink);
   }
-  .pin-verdict.ok { color: var(--white); }
-  .pin-verdict.no { color: var(--white); }
   .pin-verdict .accent-red { color: var(--red); font-weight: 700; }
   .pin-verdict .accent-blue { color: var(--blue); font-weight: 700; }
 
   .pin-desc {
     font-size: 15px;
-    line-height: 1.45;
+    line-height: 1.5;
     color: var(--gray);
-    font-weight: 300;
+    font-weight: 400;
     margin-top: auto;
   }
 
@@ -181,16 +185,14 @@
     padding-top: 28px;
     border-top: 1px solid var(--hair);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--gray);
-    font-weight: 300;
-    position: relative;
-    z-index: 1;
+    font-weight: 400;
     max-width: 640px;
   }
   .note strong {
-    color: var(--white);
-    font-weight: 500;
+    color: var(--ink);
+    font-weight: 600;
   }
 
   /* FOOTER */
@@ -205,9 +207,7 @@
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--gray-dim);
-    font-weight: 400;
-    position: relative;
-    z-index: 1;
+    font-weight: 500;
   }
 </style>
 </head>
@@ -222,14 +222,16 @@
 
   <div class="eyebrow">Equipment Notice</div>
 
-  <h1>Pull the red pin.<br><em>Leave the blue pin alone.</em></h1>
+  <h1>Pull the <span class="accent-red">red</span> pin.<br><em>Leave the <span class="accent-blue">blue</span> pin alone.</em></h1>
 
   <div class="pins">
 
     <div class="pin-card">
-      <div class="pin-dot red"></div>
-      <div class="pin-label">Red Pin</div>
-      <div class="pin-verdict ok"><span class="accent-red">Pull</span> to adjust</div>
+      <div class="pin-head">
+        <div class="pin-dot red"></div>
+        <div class="pin-label">Red Pin</div>
+      </div>
+      <div class="pin-verdict"><span class="accent-red">Pull</span> to adjust</div>
       <div class="pin-desc">
         This is the weight-selector pin. Pull it out, choose your weight,
         and slide it back in.
@@ -237,9 +239,11 @@
     </div>
 
     <div class="pin-card">
-      <div class="pin-dot blue"></div>
-      <div class="pin-label">Blue Pin</div>
-      <div class="pin-verdict no"><span class="accent-blue">Do not</span> pull</div>
+      <div class="pin-head">
+        <div class="pin-dot blue"></div>
+        <div class="pin-label">Blue Pin</div>
+      </div>
+      <div class="pin-verdict"><span class="accent-blue">Do not</span> pull</div>
       <div class="pin-desc">
         This pin holds the machine together. Removing it can damage the
         equipment and cause injury.
@@ -250,8 +254,8 @@
 
   <div class="note">
     If the blue pin looks loose or out of place, <strong>do not use the
-    machine</strong> — please let the front desk know so we can take a look.
-    Thanks for helping us keep the floor in shape.
+    machine</strong> &mdash; please let the front desk know so we can take a
+    look. Thanks for helping us keep the floor in shape.
   </div>
 
   <div class="footer">
