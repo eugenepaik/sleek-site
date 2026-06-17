@@ -9,9 +9,9 @@
 <style>
   /* =====================================================
      SLEEK — printable log (portrait letter, 8.5 x 11)
-     Personal-training check in / out sheet. Pure black &
-     white for laser printers — same DNA as the red-pin
-     B&W sign. One sheet per client.
+     Personal-training check in / out sheet. Shared log —
+     every row records its own member, trainer, date and
+     times. Pure black & white for laser printers.
      ===================================================== */
 
   @page {
@@ -42,7 +42,7 @@
   .sheet {
     width: 8.5in;
     height: 11in;
-    padding: 0.7in 0.75in;
+    padding: 0.7in 0.7in;
     margin: 0 auto;
     background: var(--white);
     position: relative;
@@ -99,43 +99,31 @@
     font-weight: 400;
   }
 
-  /* MEMBER / TRAINER FIELDS */
-  .fields {
-    margin-top: 34px;
-    display: grid;
-    grid-template-columns: 2fr 1.4fr;
-    gap: 26px 36px;
-  }
-  .field { display: flex; flex-direction: column; gap: 9px; }
-  .field-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  .intro {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.55;
     color: var(--gray);
-    font-weight: 600;
-  }
-  .field-line {
-    height: 1.5px;
-    background: var(--hair-strong);
-    width: 100%;
+    font-weight: 400;
+    max-width: 6.6in;
   }
 
   /* SESSION LOG TABLE */
   .log {
-    margin-top: 38px;
+    margin-top: 30px;
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
   }
 
   .log th {
-    font-size: 10px;
-    letter-spacing: 2.5px;
+    font-size: 9.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--gray);
     font-weight: 600;
     text-align: left;
-    padding: 0 12px 12px 0;
+    padding: 0 10px 12px 0;
     border-bottom: 1px solid var(--hair-strong);
   }
   .log th:last-child { padding-right: 0; }
@@ -143,33 +131,27 @@
   .log td {
     height: 0.54in;
     border-bottom: 1px solid var(--hair);
-    padding: 0 12px 0 0;
+    padding: 0 10px 0 0;
     vertical-align: bottom;
   }
   .log td:last-child { padding-right: 0; }
 
-  .log .num {
-    color: var(--gray-dim);
-    font-size: 13px;
-    font-weight: 500;
-    padding-bottom: 8px;
-  }
-
   /* column widths */
-  .col-num  { width: 8%; }
-  .col-date { width: 22%; }
-  .col-in   { width: 18%; }
-  .col-out  { width: 18%; }
-  .col-sign { width: 34%; }
+  .col-name { width: 23%; }
+  .col-trn  { width: 16%; }
+  .col-date { width: 14%; }
+  .col-in   { width: 12.5%; }
+  .col-out  { width: 12.5%; }
+  .col-sign { width: 22%; }
 
   /* NOTE */
   .note {
-    margin-top: 24px;
+    margin-top: 22px;
     font-size: 12px;
     line-height: 1.55;
     color: var(--gray);
     font-weight: 400;
-    max-width: 6.4in;
+    max-width: 6.6in;
   }
   .note strong { color: var(--ink); font-weight: 600; }
 
@@ -214,21 +196,16 @@
 
   <h1>Check <em>In</em> &amp; <em>Out</em>.</h1>
 
-  <div class="fields">
-    <div class="field">
-      <div class="field-label">Member Name</div>
-      <div class="field-line"></div>
-    </div>
-    <div class="field">
-      <div class="field-label">Trainer</div>
-      <div class="field-line"></div>
-    </div>
+  <div class="intro">
+    Record each session below. Print the member name and trainer, note the
+    date, time in and time out, and sign to confirm.
   </div>
 
   <table class="log">
     <thead>
       <tr>
-        <th class="col-num">#</th>
+        <th class="col-name">Member Name</th>
+        <th class="col-trn">Trainer</th>
         <th class="col-date">Date</th>
         <th class="col-in">Time In</th>
         <th class="col-out">Time Out</th>
@@ -236,22 +213,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td class="num">1</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="num">2</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="num">3</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="num">4</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="num">5</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="num">6</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="num">7</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="num">8</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="num">9</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
 
   <div class="note">
-    One sheet per member. Sign each session to confirm your time in and time
-    out are accurate. If you forget to sign out, please let your
-    <strong>trainer</strong> know before you leave.
+    Each member signs to confirm their time in and time out are accurate. If a
+    member forgets to sign out, the <strong>trainer</strong> should note it
+    before the session ends.
   </div>
 
   <div class="footer">
