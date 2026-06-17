@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sleek — Personal Training Check In &amp; Out</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* =====================================================
+     SLEEK — printable log (portrait letter, 8.5 x 11)
+     Personal-training check in / out sheet. Pure black &
+     white for laser printers — same DNA as the red-pin
+     B&W sign. One sheet per client.
+     ===================================================== */
+
+  @page {
+    size: letter portrait;
+    margin: 0;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --white: #ffffff;
+    --ink: #000000;
+    --gray: #444444;
+    --gray-dim: #777777;
+    --hair: rgba(0, 0, 0, 0.14);
+    --hair-strong: rgba(0, 0, 0, 0.30);
+  }
+
+  html, body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 8.5in;
+    height: 11in;
+    padding: 0.7in 0.75in;
+    margin: 0 auto;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--hair-strong);
+  }
+
+  .logo {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 9px;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .header-meta {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 500;
+  }
+
+  /* EYEBROW + HEADLINE */
+  .eyebrow {
+    margin-top: 40px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  h1 {
+    margin-top: 16px;
+    font-size: 62px;
+    line-height: 0.96;
+    font-weight: 300;
+    letter-spacing: -2.4px;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* MEMBER / TRAINER FIELDS */
+  .fields {
+    margin-top: 34px;
+    display: grid;
+    grid-template-columns: 2fr 1.4fr;
+    gap: 26px 36px;
+  }
+  .field { display: flex; flex-direction: column; gap: 9px; }
+  .field-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+  }
+  .field-line {
+    height: 1.5px;
+    background: var(--hair-strong);
+    width: 100%;
+  }
+
+  /* SESSION LOG TABLE */
+  .log {
+    margin-top: 38px;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .log th {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+    text-align: left;
+    padding: 0 12px 12px 0;
+    border-bottom: 1px solid var(--hair-strong);
+  }
+  .log th:last-child { padding-right: 0; }
+
+  .log td {
+    height: 0.6in;
+    border-bottom: 1px solid var(--hair);
+    padding: 0 12px 0 0;
+    vertical-align: bottom;
+  }
+  .log td:last-child { padding-right: 0; }
+
+  .log .num {
+    color: var(--gray-dim);
+    font-size: 13px;
+    font-weight: 500;
+    padding-bottom: 8px;
+  }
+
+  /* column widths */
+  .col-num  { width: 8%; }
+  .col-date { width: 22%; }
+  .col-in   { width: 18%; }
+  .col-out  { width: 18%; }
+  .col-sign { width: 34%; }
+
+  /* NOTE */
+  .note {
+    margin-top: 24px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--gray);
+    font-weight: 400;
+    max-width: 6.4in;
+  }
+  .note strong { color: var(--ink); font-weight: 600; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--hair);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray-dim);
+    font-weight: 500;
+  }
+  .footer strong {
+    color: var(--ink);
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0.2px;
+    font-size: 12px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .sheet { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="header">
+    <div class="logo">Sleek</div>
+    <div class="header-meta">Koreatown &nbsp;·&nbsp; Los Angeles</div>
+  </div>
+
+  <div class="eyebrow">Personal Training</div>
+
+  <h1>Check <em>In</em> &amp; <em>Out</em>.</h1>
+
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">Member Name</div>
+      <div class="field-line"></div>
+    </div>
+    <div class="field">
+      <div class="field-label">Trainer</div>
+      <div class="field-line"></div>
+    </div>
+  </div>
+
+  <table class="log">
+    <thead>
+      <tr>
+        <th class="col-num">#</th>
+        <th class="col-date">Date</th>
+        <th class="col-in">Time In</th>
+        <th class="col-out">Time Out</th>
+        <th class="col-sign">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">1</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">2</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">3</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">4</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">5</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">6</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">7</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">8</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">9</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num">10</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    One sheet per member. Sign each session to confirm your time in and time
+    out are accurate. If you forget to sign out, please let your
+    <strong>trainer</strong> know before you leave.
+  </div>
+
+  <div class="footer">
+    <span>Sleek Fitness &nbsp;·&nbsp; <strong>info@sleekfitness.us</strong></span>
+    <span>Personal Training Log</span>
+  </div>
+
+</div>
+
+</body>
+</html>
