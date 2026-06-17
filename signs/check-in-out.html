@@ -9,9 +9,10 @@
 <style>
   /* =====================================================
      SLEEK — printable log (portrait letter, 8.5 x 11)
-     Personal-training check in / out sheet. Shared log —
-     every row records its own member, trainer, date and
-     times. Pure black & white for laser printers.
+     Personal-training check in / out sheet. One day per
+     sheet: the date is set once at the top, then every
+     row records a member, trainer and their times.
+     Pure black & white for laser printers.
      ===================================================== */
 
   @page {
@@ -76,16 +77,20 @@
     font-weight: 500;
   }
 
-  /* EYEBROW + HEADLINE */
-  .eyebrow {
+  /* EYEBROW + HEADLINE ROW (with date) */
+  .title-row {
     margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .eyebrow {
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--gray);
     font-weight: 600;
   }
-
   h1 {
     margin-top: 16px;
     font-size: 62px;
@@ -99,8 +104,30 @@
     font-weight: 400;
   }
 
+  /* DATE FIELD */
+  .date-field {
+    width: 2.8in;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding-bottom: 8px;
+  }
+  .date-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+  }
+  .date-line {
+    height: 1.5px;
+    background: var(--hair-strong);
+    width: 100%;
+  }
+
   .intro {
-    margin-top: 20px;
+    margin-top: 22px;
     font-size: 14px;
     line-height: 1.55;
     color: var(--gray);
@@ -137,11 +164,10 @@
   .log td:last-child { padding-right: 0; }
 
   /* column widths */
-  .col-name { width: 23%; }
-  .col-trn  { width: 16%; }
-  .col-date { width: 14%; }
-  .col-in   { width: 12.5%; }
-  .col-out  { width: 12.5%; }
+  .col-name { width: 28%; }
+  .col-trn  { width: 20%; }
+  .col-in   { width: 15%; }
+  .col-out  { width: 15%; }
   .col-sign { width: 22%; }
 
   /* NOTE */
@@ -192,13 +218,20 @@
     <div class="header-meta">Koreatown &nbsp;·&nbsp; Los Angeles</div>
   </div>
 
-  <div class="eyebrow">Personal Training</div>
-
-  <h1>Check <em>In</em> &amp; <em>Out</em>.</h1>
+  <div class="title-row">
+    <div class="title-block">
+      <div class="eyebrow">Personal Training</div>
+      <h1>Check <em>In</em> &amp; <em>Out</em>.</h1>
+    </div>
+    <div class="date-field">
+      <div class="date-label">Date</div>
+      <div class="date-line"></div>
+    </div>
+  </div>
 
   <div class="intro">
-    Record each session below. Print the member name and trainer, note the
-    date, time in and time out, and sign to confirm.
+    One sheet per day. For each session, print the member name and trainer,
+    note the time in and time out, and sign to confirm.
   </div>
 
   <table class="log">
@@ -206,23 +239,22 @@
       <tr>
         <th class="col-name">Member Name</th>
         <th class="col-trn">Trainer</th>
-        <th class="col-date">Date</th>
         <th class="col-in">Time In</th>
         <th class="col-out">Time Out</th>
         <th class="col-sign">Signature</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
 
