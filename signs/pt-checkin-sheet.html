@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sleek — Daily PT Check-In Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* =====================================================
+     SLEEK — Daily PT Check-In Sheet
+     Printable front-desk log (portrait letter, 8.5 x 11).
+     White ink-on-paper. Same DNA as the equipment signs.
+     ===================================================== */
+
+  @page { size: 8.5in 11in; margin: 0; }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --paper: #ffffff;
+    --ink: #0a0a0a;
+    --gray: #555553;
+    --gray-dim: #6e6e6c;
+    --gray-dimmer: #8a8a87;
+    --hair: rgba(0, 0, 0, 0.18);
+    --hair-strong: rgba(0, 0, 0, 0.32);
+    --row: rgba(0, 0, 0, 0.04);
+  }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .sheet {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    background: var(--paper);
+    padding: 0.7in 0.75in 0.6in;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+  }
+
+  /* ===== Header strip ===== */
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .logo {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .head-meta {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ===== Title + date ===== */
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    margin-top: 30px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 36px;
+    height: 1px;
+    background: var(--gray);
+  }
+  .headline {
+    font-size: 46px;
+    font-weight: 200;
+    letter-spacing: -1.6px;
+    line-height: 0.98;
+    color: var(--ink);
+  }
+  .headline em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* date slot */
+  .date-field {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 2.7in;
+  }
+  .date-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .date-line {
+    height: 1.5px;
+    background: var(--hair-strong);
+    width: 100%;
+  }
+
+  /* ===== Check-in table ===== */
+  .log {
+    flex: 1;
+    margin-top: 34px;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .log thead th {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-align: left;
+    padding: 0 12px 12px;
+    border-bottom: 1.5px solid var(--hair-strong);
+    vertical-align: bottom;
+  }
+  .log tbody td {
+    border-bottom: 1px solid var(--hair);
+    padding: 0 12px;
+    height: 0.46in;
+  }
+  .log tbody tr:nth-child(even) td { background: var(--row); }
+
+  .col-num   { width: 0.5in; text-align: center; }
+  .col-num   { color: var(--gray-dimmer); font-size: 12px; font-weight: 400; }
+  th.col-num { text-align: center; }
+  .col-time  { width: 1.5in; }
+  .col-trainer { width: 2.4in; }
+
+  /* ===== Footer ===== */
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 18px;
+    margin-top: 6px;
+    border-top: 1px solid var(--hair);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-dimmer);
+  }
+  .foot strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    text-transform: none;
+    font-size: 13px;
+  }
+  .foot .contact { text-align: right; }
+
+  @media print {
+    body { padding: 0; display: block; }
+    .sheet { width: 100%; height: 100%; box-shadow: none; padding: 0.6in 0.7in 0.5in; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="sheet">
+
+    <div class="head">
+      <div class="logo">Sleek</div>
+      <div class="head-meta">Koreatown &nbsp;·&nbsp; Los Angeles</div>
+    </div>
+
+    <div class="title-row">
+      <div>
+        <div class="eyebrow">Front Desk</div>
+        <div class="headline">Daily PT<br><em>Check-In.</em></div>
+      </div>
+      <div class="date-field">
+        <div class="date-label">Date</div>
+        <div class="date-line"></div>
+      </div>
+    </div>
+
+    <table class="log">
+      <thead>
+        <tr>
+          <th class="col-num">#</th>
+          <th>Member Name</th>
+          <th class="col-time">Time</th>
+          <th class="col-trainer">Trainer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-num">1</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">2</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">3</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">4</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">5</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">6</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">7</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">8</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">9</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">10</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">11</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">12</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">13</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">14</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">15</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">16</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">17</td><td></td><td></td><td></td></tr>
+        <tr><td class="col-num">18</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="foot">
+      <div class="effective">
+        Front desk &mdash; log every PT session as members arrive.
+      </div>
+      <div class="contact">
+        Questions
+        <strong>info@sleekfitness.us</strong>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
