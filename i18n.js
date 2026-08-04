@@ -42,7 +42,7 @@
       'home.kv.location.label':  '위치',
       'home.kv.location.value':  '코리아타운 플라자, 로스앤젤레스',
       'home.kv.hours.label':     '운영시간',
-      'home.kv.hours.value':     '오전 7시 — 오후 11시 &nbsp;·&nbsp; 매일',
+      'home.kv.hours.value':     '오전 7시 — 오후 11시 &nbsp;·&nbsp; 평일<br>오전 7시 — 오후 9시 &nbsp;·&nbsp; 주말',
       'home.kv.opening.label':   '상태',
       'home.kv.opening.value':   '지금 오픈',
 
@@ -71,7 +71,7 @@
       // Home — Location teaser
       'home.location.eyebrow': '위치',
       'home.location.h2':      '코리아타운 플라자.<br><em>K-타운의 중심.</em>',
-      'home.location.p':       '928 S Western Ave, Suite 333 &mdash; 코리아타운 플라자 내부. 코리아타운 중심가에서 도보 거리, 메트로에서 가깝고, 주 7일 오전 7시부터 오후 11시까지 오픈.',
+      'home.location.p':       '928 S Western Ave, Suite 333 &mdash; 코리아타운 플라자 내부. 코리아타운 중심가에서 도보 거리, 메트로에서 가깝고, 평일 오전 7시부터 오후 11시까지, 주말 오전 7시부터 오후 9시까지 오픈.',
       'home.location.cta':     '방문 세부정보',
 
       // Home — Signup section
@@ -93,7 +93,7 @@
       'exp.gym.h2':        '제대로 된 <em>플로어.</em>',
       'exp.gym.p1':        '전체 근력 및 컨디셔닝 플로어 &mdash; 랙, 플레이트, 덤벨, 케이블, 카디오 &mdash; 한 점 한 점 선별되었고, 제대로 사용할 수 있는 공간과 함께 배치되었습니다. 벤치를 찾아 헤맬 일 없습니다. 유일한 스쿼트 랙에 세 명이 줄 설 일 없습니다. 진지한 리프터들이 실제로 훈련하는 무게의 장비.',
       'exp.gym.p2':        '플레이트 로디드와 핀 로디드 장비는 <strong>Panatta</strong>와 <strong>Newtech</strong>. <strong>XMASTER</strong> 덤벨, 웨이트 플레이트, 바벨이 플로어 전체에. 카디오는 <strong>Life Fitness</strong> 플래그십 라인업.',
-      'exp.gym.p3':        '주 7일, 오전 7시부터 오후 11시까지 오픈. 아침에는 더 조용하고, 저녁에는 더 깊은 벤치 &mdash; 하지만 훈련 일정을 무너뜨리는 혼잡함은 절대 없습니다.',
+      'exp.gym.p3':        '평일 오전 7시부터 오후 11시까지, 주말 오전 7시부터 오후 9시까지 오픈. 아침에는 더 조용하고, 저녁에는 더 깊은 벤치 &mdash; 하지만 훈련 일정을 무너뜨리는 혼잡함은 절대 없습니다.',
 
       // Experience — Pilates
       'exp.pil.eyebrow':   '02 &nbsp;·&nbsp; 필라테스',
@@ -133,7 +133,7 @@
       'mem.ways.h2':       '실제로 운동하는 <em>방식대로.</em>',
       'mem.ways.lead':     '실제로 운동하는 방식에 맞춰 멤버십을 구성하세요. 아래 모든 옵션은 지금 이용 가능합니다.',
       'mem.row1.name':     '오픈짐 멤버십',
-      'mem.row1.desc':     '근력 플로어, 카디오, 시설 전체 이용. 주 7일, 오전 7시부터 오후 11시까지.',
+      'mem.row1.desc':     '근력 플로어, 카디오, 시설 전체 이용. 평일 오전 7시부터 오후 11시까지, 주말 오전 7시부터 오후 9시까지.',
       'mem.row2.name':     '필라테스 애드온',
       'mem.row2.desc':     '오픈짐 멤버십에 무제한 리포머 클래스 추가.',
       'mem.row3.name':     '오픈짐 + 필라테스 번들',
@@ -159,12 +159,12 @@
       // Visit hero
       'visit.hero.eyebrow': '오시는 길',
       'visit.hero.h1':      '코리아타운 플라자.<br><em>K-타운의 중심.</em>',
-      'visit.hero.lede':    '928 S Western Ave, Suite 333 &mdash; 코리아타운 플라자 내부. 코리아타운 중심가에서 도보 거리, 메트로에서 가깝고, 주 7일 오전 7시부터 오후 11시까지 오픈.',
+      'visit.hero.lede':    '928 S Western Ave, Suite 333 &mdash; 코리아타운 플라자 내부. 코리아타운 중심가에서 도보 거리, 메트로에서 가깝고, 평일 오전 7시부터 오후 11시까지, 주말 오전 7시부터 오후 9시까지 오픈.',
 
       // Visit — Location meta
       'visit.row1.label':   '주소',
       'visit.row2.label':   '운영시간',
-      'visit.row2.value':   '월요일 &ndash; 일요일<br>오전 7:00 &ndash; 오후 11:00',
+      'visit.row2.value':   '월요일 &ndash; 금요일<br>오전 7:00 &ndash; 오후 11:00<br>토요일 &ndash; 일요일<br>오전 7:00 &ndash; 오후 9:00',
       'visit.row3.label':   '교통',
       'visit.row3.value':   '윌셔/웨스턴 메트로역에서 도보 거리.<br>코리아타운 플라자 내 무료 검증 주차, 충분한 공간.',
       'visit.row4.label':   '상태',
